@@ -1,0 +1,42 @@
+h1 {
+    color: red;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+h3 {
+    color: blue;
+    text-decoration: underline;
+    font-family: sans-serif;
+}
+
+h4 {
+    text-decoration: underline;
+    font-family: sans-serif;
+}
+
+img {
+    border: 5px solid darkblue;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+
+p,
+li {
+    font-size: 20px;
+    line-height: 2;
+    font-family: sans-serif;
+}
+
+.italic-text {
+    font-size: 25px;
+}
+
+li:first-child {
+    color: red;
+}
+
+li:nth-child(3) {
+    color: darkmagenta;
+}

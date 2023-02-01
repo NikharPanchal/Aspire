@@ -1,0 +1,35 @@
+.container {
+    padding: 20px;
+    display: flex;
+    height: 150px;
+    background-color: grey;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    gap: 10px;
+}
+
+.el-1 {
+    background-color: green;
+}
+
+.el-2 {
+    background-color: aqua;
+    order: 2;
+}
+
+.el-3 {
+    background-color: blue;
+    order: 1;
+}
+
+.el-4 {
+    background-color: chocolate;
+}
+
+.el-5 {
+    background-color: darkblue;
+}
+
+.el-6 {
+    background-color: darkviolet;
+}

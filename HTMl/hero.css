@@ -1,0 +1,32 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+}
+.hero{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 90px;
+    margin:0 auto;
+    align-items: center;
+}
+.hero-text{
+    font-weight: bold;
+    font-size: 40px;
+    color:black;
+}
+.hero-image{
+    width: 80%;
+    height: 200px;
+}
+.hero-desc{
+    font-family: Helvetica;
+    line-height: 1.5;
+}
+.btn{
+    margin-top: 50px;
+    padding-left: 10px;
+}

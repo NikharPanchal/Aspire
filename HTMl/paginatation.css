@@ -1,0 +1,64 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.left-arrow {
+    color: #087f58;
+    border-radius: 50%;
+    border: 1px solid #087f58;
+    cursor: pointer;
+}
+
+.right-arrow {
+    color: #087f58;
+    border-radius: 50%;
+    border: 1px solid #087f58;
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.link,
+.multi-page {
+    padding: 10px;
+    color: dimgrey;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.link:hover {
+    background-color: #087f58;
+    color: white;
+    border-radius: 50%;
+}
+
+.link:visited {
+    text-decoration: none;
+    text-transform: none;
+    display: flex;
+    justify-content: center;
+}
+
+.side:hover {
+    background-color: #087f58;
+    color: white;
+    border-radius: 50%;
+}
+
+.side {
+    width: 25px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.page {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}

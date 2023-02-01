@@ -1,0 +1,195 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: sans-serif;
+    margin-top: 60px;
+}
+
+.top_heading {
+    background-color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+.price {
+    float: left;
+}
+
+.shipping {
+    color: gray;
+    font-weight: bold;
+    padding-top: 10px;
+    font-size: 12px;
+    margin-right: 40px;
+}
+
+h5 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: normal;
+}
+
+.more-info {
+    padding: 20px 20px 20px 0px;
+    text-decoration: underline;
+}
+
+.more-info:hover {
+    font-family: sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 20px;
+    width: 100%;
+    padding: 0px;
+    border-top: 3px solid black;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+a {
+    color: black;
+    padding-top: 10px;
+}
+
+a:visited {
+    color: black;
+    padding-top: 10px;
+}
+
+li {
+    line-height: 1.5;
+    list-style: square;
+    margin-left: 20px;
+}
+
+li:last-child {
+    padding-bottom: 10px;
+}
+
+h3 {
+    padding-top: 10px;
+}
+
+h1 {
+    font-size: 20px;
+    position: relative;
+}
+
+h1::after {
+    content: "SALE";
+    position: absolute;
+    background-color: green;
+    padding: 2px 2px;
+    color: white;
+    left: -20px;
+    top: -10px;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.container {
+    border: 3px solid black;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+/* .like{
+    width: 50px;
+    height: 50px;
+    position: relative;
+    bottom: 80px;
+    right: 100px;
+} */
+.color {
+    display: flex;
+    padding: 5px;
+}
+
+.red-color {
+    height: 15px;
+    width: 15px;
+    background-color: red;
+    margin-right: 5px;
+}
+
+.red-color:hover,
+.green-color:hover,
+.blue-color:hover,
+.black-color:hover,
+.pink-color:hover {
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.green-color {
+
+    height: 15px;
+    width: 15px;
+    background-color: green;
+    margin-right: 5px;
+}
+
+.blue-color {
+
+    height: 15px;
+    width: 15px;
+    background-color: blue;
+    margin-right: 5px;
+}
+
+.black-color {
+
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    margin-right: 5px;
+}
+
+.pink-color {
+
+    height: 15px;
+    width: 15px;
+    background-color: pink;
+    margin-right: 5px;
+}
+
+.foot-img {
+    float: left;
+    padding: 10px;
+}
+
+.product-details {
+    float: right;
+    width: 200px;
+    font-size: 0.83em;
+}
+
+.product-info {
+    width: 180px;
+    float: left;
+    padding-left: 10px;
+}
+
+.container-second {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 3px solid black;
+    margin-top: 5px;
+}
