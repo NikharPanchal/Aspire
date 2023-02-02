@@ -21,4 +21,4 @@ for (let i = 0; i < animal.length; i++) {
 }
 const animal_set = new Set(animal_lower);
 console.log(animal);
-//console.log(animal_set);
+console.log(animal_set);

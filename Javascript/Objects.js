@@ -16,6 +16,6 @@ const choise = prompt("Choose between fname, lname, age, nationality and friends
 
 if (empData[choise]) {
     console.log(empData[choise]);
-}else{
+} else {
     console.log(`${choise} is not exists...try another`);
 }
