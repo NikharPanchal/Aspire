@@ -95,6 +95,10 @@
     gap: 0;
 }
 
+.dell {
+    border: 1px solid black;
+}
+
 .learn_more {
     padding-top: 50px;
     max-height: 600px;
@@ -107,4 +111,8 @@
 
 .more-details {
     padding: 30px;
+}
+
+.middle-img {
+    border: 2px solid black;
 }
