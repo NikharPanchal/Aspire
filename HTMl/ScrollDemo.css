@@ -1,0 +1,111 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.main_section {
+    background-color: cadetblue;
+    height: 400px;
+    max-width: 100%;
+}
+
+.heading {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding-top: 100px;
+}
+
+.btn-area {
+    padding: 20px;
+    text-align: center;
+}
+
+.more_btn {
+    background-color: rgb(143, 61, 61);
+    color: aliceblue;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.more_btn:hover {
+    background-color: brown;
+}
+
+.home_btn {
+
+    background-color: rgb(143, 61, 61);
+    color: aliceblue;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.home_btn:hover {
+    background-color: brown;
+}
+
+.info_section {
+    background-color: rgb(153, 196, 140);
+    height: 400px;
+    max-width: 100%;
+}
+
+.header_area {
+    width: 100%;
+    background-color: #f1f1f1;
+    height: 40px;
+    padding: 10px 0px;
+
+}
+
+.label {
+    width: 20px;
+    background-color: dodgerblue;
+    height: 10px;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.footer_area {
+    width: 100%;
+    background-color: #f1f1f1;
+    height: 40px;
+    padding: 10px 0px;
+    float: left;
+}
+
+.copyright {
+    float: right;
+    padding-right: 20px
+}
+
+.info_section {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.image_section {
+    gap: 0;
+}
+
+.learn_more {
+    padding-top: 50px;
+    max-height: 600px;
+}
+
+.logo {
+    text-align: center;
+    padding: 20px;
+}
+
+.more-details {
+    padding: 30px;
+}
