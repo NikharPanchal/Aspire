@@ -1,3 +1,4 @@
+'use strict'
 const janas = {
     fname: "Nikhar",
     lname: "Panchal",
@@ -12,4 +13,16 @@ const show_data = () => {
     janas.fullname();
 }
 
-show_data();
+const person = {
+    name: "Nikhar",
+    walk() {
+        console.log(this);
+    }
+};
+
+person.walk();
+
+const walk = person.walk.bind(person);
+
+walk();
+//show_data();

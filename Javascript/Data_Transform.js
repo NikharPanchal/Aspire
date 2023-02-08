@@ -1,5 +1,6 @@
 //Map function in array
 sqrt_arr = [4, 16, 121, 49, 25];
+
 const map_data = sqrt_arr.map(data => Math.sqrt(data));
 
 console.log(map_data);

@@ -14,4 +14,3 @@ console.log(arr);
 console.log(arr.reverse());
 
 console.log(arr.join(''));
-
