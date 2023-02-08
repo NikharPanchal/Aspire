@@ -20,9 +20,9 @@ const person = {
     }
 };
 
+//Chaining method
 person.walk();
 
 const walk = person.walk.bind(person);
 
 walk();
-//show_data();
