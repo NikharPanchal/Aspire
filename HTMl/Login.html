@@ -12,11 +12,10 @@
             // alert('button pressed');
             const checkEmail = document.getElementById("#email");
             const checkPassword = document.getElementById("#floatingPassword")
-            if (checkEmail == null && checkPassword == null) {
+            if (checkEmail == null || checkPassword == null) {
                 document.getElementById('errorEmailAndPassword').innerHTML = "Username and password is mandatory...";
             }
         }
-
 
     </script>
 
