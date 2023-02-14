@@ -1,15 +1,125 @@
-.bg-nav {
-    background-color: #062752 !important;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
-.some {
-    color: white;
+.header-area {
+    position: relative;
+    width: 100%;
 }
 
-.event {
-    color: aqua;
+.form-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    text-align: right;
 }
 
-.year {
-    color: darkmagenta;
+.tem-color {
+    color: #696969 !important;
+}
+
+.header-img {
+    position: inherit;
+    width: 100%;
+}
+
+.nav-label {
+    background-color: #ececec;
+}
+
+.main-bar {
+    background-color: white;
+}
+
+/* .nav-item {
+    text-align: right !important;
+} */
+.text-event {
+    padding: 5px;
+    height: 40px;
+    background-color: #093058;
+}
+
+.text-decoration {
+    text-decoration: none;
+}
+
+.respo {
+    width: 100%;
+    height: auto;
+}
+
+.regis-respo {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.jwlogo {
+    width: 30%;
+    height: 20%;
+    margin-right: 15px;
+}
+
+.left-col {
+    margin: 0;
+    padding: 0;
+    /* width: 15% !important;
+    max-width: 15% !important; */
+    background-color: #ececec;
+}
+
+.right-col {
+    width: 80% !important;
+    max-width: 80% !important;
+}
+
+/* for left - right col responsive accoring to viewport */
+.side-bar {
+    width: 100%;
+}
+
+.img-margin {
+    display: block;
+    margin-left: 40%;
+    margin-right: 50%;
+}
+
+@media screen and (min-width:480px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-link {
+        padding: 0;
+        margin-left: -95px;
+        text-align: right;
+    }
+}
+
+.question-input {
+    width: 70%;
+    margin-left: 10px;
+    background-color: #DEEAF7;
+}
+
+.question-text-area {
+    width: 70%;
+    margin-left: 10px;
+}
+
+.submit-btn {
+    width: 20%;
+    margin: -20px 0px 10px 10px;
+    border-radius: 5px;
+}
+
+.lorem-text {
+    font-size: 15px !important;
 }
