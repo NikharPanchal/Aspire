@@ -18,7 +18,7 @@ function getAllData() {
             <td>${val.date}</td>
             <td>${val.contact}</td>
             <td>${val.email}</td>
-            <td><button type="button" class="btn btn-sm btn-primary" onclick="updateData(${val.rollno})">
+            <td><button data-toggle="modal" data-target="#exampleModal" type="button" class="btn btn-sm btn-primary" onclick="updateData(${val.rollno})">
             <i class="fa fa-edit"></i></button></td>
 
             <td><button type='button'  class="btn btn-sm btn-danger" onclick="deleteData(${val.rollno})">
