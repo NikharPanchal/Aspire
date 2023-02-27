@@ -1,0 +1,16 @@
+<h1>{{title}}</h1>
+<h1>{{name}}</h1>
+
+<section>
+  <app-home (bind)="rootFun($event)"></app-home>
+
+
+  <h3>Property Binding Example</h3>
+  Enter input :
+  <input type="text" [(ngModel)]="myModel" />
+
+  <br>
+
+  <app-onchange [userInput]='myModel'></app-onchange>
+
+</section>
