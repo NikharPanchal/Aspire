@@ -13,4 +13,39 @@
 
   <app-onchange [userInput]='myModel'></app-onchange>
 
+
+  <h3>Routing Example</h3>
+
+  <ul>
+    <li>
+      <a routerLink="list">list</a>
+    </li>
+    <li>
+      <a routerLink="login">login</a>
+    </li>
+  </ul>
+
+  <h4><router-outlet></router-outlet></h4>
+
+  <h3>Custom Pipe Example</h3>
+
+  <ul>
+    <li>
+      {{name | myPipe }}
+    </li>
+  </ul>
+
+  <h3>Content Projection Example</h3>
+
+  <app-card [product]="card">
+    <h4 class="electro text-center">Electornic items</h4>
+  </app-card>
+
+  <h3>Attribute Directive</h3>
+
+  <div [ngStyle]="myStyle">
+
+  </div>
+  <br>
+  <button (click)="customStyle()">Add Style</button>
 </section>

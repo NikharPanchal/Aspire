@@ -6,17 +6,24 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { OnchangeComponent } from './onchange/onchange.component';
+import { AdminModule } from './admin/admin.module';
+import { MyPipePipe } from './my-pipe.pipe';
+import { CardComponent } from './card/card.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     OnchangeComponent,
+    MyPipePipe,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
