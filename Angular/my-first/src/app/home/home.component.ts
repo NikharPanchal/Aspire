@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 
 @Component({
@@ -8,9 +8,15 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('message') mymsg: ElementRef | undefined;
+
 
   constructor() { }
+  ngAfterViewInit() {
+    console.log(this.mymsg);
+  }
 
   @Output() bind = new EventEmitter();
 
@@ -20,7 +26,5 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-
 
 }
