@@ -1,19 +1,59 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      <form (ngSubmit)="submit()">
+    <div class="col-md-6 offset-md-3 shadow-lg p-3 my-5 bg-white rounded border border-radius">
+      <h2 class="text-center p-3">Angular Form Demo</h2>
+      <form [formGroup]="registerform" (ngSubmit)="submit()">
 
         <div class="form-group mt-3">
           <label for="first name">First Name</label>
-          <input type="text" name="firstname" class="form-group" ngModel>
+          <input type="text" formControlName="firstname"
+            [ngClass]="{'is-invalid':submitted && registerform.controls.firstname.errors}" name=" firstname"
+            class="form-control">
+          <span class="text-danger"
+            *ngIf="registerform.get('firstname')?.invalid && registerform.get('firstname')?.touched">Firstname is
+            required</span>
         </div>
 
         <div class="form-group mt-3">
           <label for="first name">Last Name</label>
-          <input type="text" name="lastname" class="form-group" ngModel>
+          <input type="text" formControlName="lastname"
+            [ngClass]="{'is-invalid':submitted && registerform.controls.lastname.errors}" name="lastname"
+            class="form-control">
+          <span class="text-danger"
+            *ngIf="registerform.get('lastname')?.invalid && registerform.get('lastname')?.touched">Lastname is
+            required</span>
         </div>
+
+        <div class="form-group mt-3">
+          <label for="email">Email Address</label>
+          <input formControlName="email" [ngClass]="{'is-invalid':submitted && registerform.controls.email.errors}"
+            type="text" name="email" class="form-control">
+          <span class="text-danger"
+            *ngIf="registerform.get('email')?.invalid && registerform.get('email')?.touched">Email is
+            required</span>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="email">Contact Number</label>
+          <input formControlName="contact" [ngClass]="{'is-invalid':submitted && registerform.controls.contact.errors}"
+            type="text" name="contact" class="form-control">
+          <span class="text-danger"
+            *ngIf="registerform.get('contact')?.invalid && registerform.get('contact')?.touched">Contact is
+            required</span>
+        </div>
+
+        <div class="form-group mt-3">
+          <label for="password">Password</label>
+          <input type="text" formControlName="password"
+            [ngClass]="{'is-invalid':submitted && registerform.controls.password.errors}" name="password"
+            class="form-control">
+          <span class="text-danger"
+            *ngIf="registerform.get('password')?.invalid && registerform.get('password')?.touched">Password is
+            required</span>
+        </div>
+
         <div class="text-center mt-3">
-          <input class="btn btn-primary" type="submit" value="submit">
+          <input class="btn btn-primary" type="submit" value="Register">
         </div>
       </form>
     </div>
