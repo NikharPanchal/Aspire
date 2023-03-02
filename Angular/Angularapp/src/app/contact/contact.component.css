@@ -4,9 +4,13 @@
 }
 
 .address {
-    height: 60%;
+    height: 300px;
 }
 
 .contact {
-    height: 70%;
+    margin: 0 auto;
+}
+
+.shadow {
+    height: 300px;
 }
