@@ -1,5 +1,38 @@
-var rollno = "";
+(function () {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
 
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                else {
+                    save()
+                }
+                form.classList.add('was-validated')
+            }, false)
+
+        })
+    $("#closebtn").on("click", function (event) {
+        event.preventDefault();
+        $('#insertform')
+            .trigger("reset")
+            .removeClass('was-validated')
+    });
+
+    $("#closebtnmodal").on("click", function (event) {
+        event.preventDefault();
+        $('#insertform')
+            .trigger("reset")
+            .removeClass('was-validated')
+    });
+})()
+
+var rollno = "";
 
 function getAllData() {
 
@@ -20,6 +53,7 @@ function getAllData() {
             <td>${val.address}</td>
             <td>${val.date}</td>
             <td>${val.contact}</td>
+            <td>${val.gender}</td>
             <td>${val.email}</td>
 
             <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalCenteredit" onclick="updateData(${val.rollno})">
@@ -40,11 +74,9 @@ function getAllData() {
 }
 
 
-document.querySelector('.submitdata').addEventListener('click', save)
+//document.querySelector('.submitdata').addEventListener('click', save)
 
 function validateinsert() {
-
-    alert("insert validate call")
 
     const fname = document.getElementById('fname').value;
     const lname = document.getElementById('lname').value;
@@ -54,18 +86,16 @@ function validateinsert() {
     const email = document.getElementById('email').value;
 
     if (fname === "" || lname === "" || address === "" || date === "" || contact === "" || email === "") {
-        alert('return true')
+
         return true;
     }
     else {
-        alert('return false')
         return false;
     }
 }
 
 function validateupdate() {
 
-    alert("update validate call")
 
     const fname = document.getElementById('studfname').value;
     const lname = document.getElementById('studlname').value;
@@ -75,11 +105,9 @@ function validateupdate() {
     const email = document.getElementById('studemail').value;
 
     if (fname === "" || lname === "" || address === "" || date === "" || contact === "" || email === "") {
-        alert('return true')
         return true;
     }
     else {
-        alert('return false')
         return false;
     }
 }
@@ -87,7 +115,6 @@ function validateupdate() {
 function save() {
 
     if (!validateinsert()) {
-        alert("save")
         if (localStorage.getItem('studObject') == null) {
             var studArr = [];
             document.getElementById('rollno').setAttribute('value', 100);
@@ -106,8 +133,10 @@ function save() {
             address: document.getElementById('address').value,
             date: document.getElementById('date').value,
             contact: document.getElementById('contact').value,
+            gender: document.querySelector('input[name="gender"]:checked').value,
             email: document.getElementById('email').value
         }
+
 
         studArr.push(studetData);
         localStorage.setItem("studObject", JSON.stringify(studArr));
@@ -155,6 +184,13 @@ function updateData(rollno) {
                 document.getElementById('studdate').value = val.date,
                 document.getElementById('studcontact').value = val.contact,
                 document.getElementById('studemail').value = val.email
+
+            if (val.gender == 'male') {
+                document.getElementById('studmale').checked = true
+            } else {
+
+                document.getElementById('studfemale').checked = true
+            }
         }
     })
 
@@ -165,10 +201,8 @@ document.querySelector('.editstudentdata').addEventListener('click', update)
 
 function update() {
 
-    alert('update called')
 
     if (!validateupdate()) {
-        alert("update")
         studupdateArr = JSON.parse(localStorage.getItem('studObject')) ?? [];
 
         studupdateArr.forEach(index => {
@@ -178,6 +212,7 @@ function update() {
                     index.address = document.getElementById('studaddress').value,
                     index.date = document.getElementById('studdate').value,
                     index.contact = document.getElementById('studcontact').value,
+                    index.gender = document.querySelector('input[name="gen"]:checked').value,
                     index.email = document.getElementById('studemail').value
             }
         })
@@ -191,9 +226,6 @@ function clearAllRecord() {
 
     if (localStorage.getItem('studObject') != null) {
         localStorage.clear();
+        getAllData()
     }
-    else {
-
-    }
-
 }

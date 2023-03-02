@@ -1,11 +1,19 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { LoginService } from './admin/login/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-
+  providers: [LoginService]
 })
 export class AppComponent {
+
+  public logged: LoginService = new LoginService();
+
+  LogIt() {
+    this.logged.logIn();
+  }
 
   public card = [
     { title: 'Tv', price: '100' },
@@ -30,4 +38,5 @@ export class AppComponent {
   customStyle() {
     this.myStyle.background = 'black';
   }
+
 }

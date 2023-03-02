@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserserviceService } from './userservice.service';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservice: UserserviceService) { }
 
   ngOnInit(): void {
+  }
+  callMyApi() {
+    this.userservice.getUserApi().subscribe(data => console.log(data));
   }
 
 }
