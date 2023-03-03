@@ -1,0 +1,32 @@
+<div class="container-fluid login">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 shadow-lg p-3 my-5 bg-white rounded border border-radius">
+            <h2 class="text-center p-3">Angular Login</h2>
+            <form [formGroup]="loginform" (ngSubmit)="login()">
+
+                <div class="form-group mt-3">
+                    <label for="username">User Name</label>
+
+                    <input type="text" formControlName="username"
+                        [ngClass]="{'is-invalid':subimitted && loginform.controls.username.errors}" name="username"
+                        class="form-control" class="form-control">
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="password">Password</label>
+                    <input type="text" formControlName="password"
+                        [ngClass]="{'is-invalid':subimitted && loginform.controls.password.errors}"
+                        class="form-control">
+                </div>
+                <div class="col-5 mt-3">
+                    <a routerLink="/register">Don't have an account?</a>
+                </div>
+                <div class="text-center mt-3">
+                    <input type="submit" value="Login" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
