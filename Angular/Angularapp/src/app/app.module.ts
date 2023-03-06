@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModule } from './user/register/register.module';
 import { HttpClientModule } from '@angular/common/http'
 import { LoginserviceService } from './user/service/loginservice.service';
+import { ServiceModule } from './service/service.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { LoginserviceService } from './user/service/loginservice.service';
     ReactiveFormsModule,
     FormsModule,
     RegisterModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceModule
   ],
   providers: [LoginserviceService],
   bootstrap: [AppComponent]

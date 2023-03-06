@@ -7,12 +7,56 @@
 footer {
     color: aliceblue;
     background: black;
-    position: absolute;
-    left: 0;
     bottom: 0;
+    left: 0;
     text-align: center;
-    height: 25%;
-    width: 100%;
+    right: 0;
+    height: auto;
+    padding-top: 20px;
+}
+
+@media only screen and (min-width: 1024px) {
+
+    footer {
+        color: aliceblue;
+        background: black;
+        bottom: 0 !important;
+        left: 0;
+        text-align: center;
+        right: 0;
+        height: auto;
+        padding-top: 10px;
+        margin-top: 113px;
+    }
+}
+
+/*Large laptop*/
+@media only screen and (min-width: 1440px) {
+    footer {
+        color: aliceblue;
+        background: black;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        right: 0;
+        height: auto;
+        padding-top: 10px;
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    footer {
+        color: aliceblue;
+        background: black;
+        bottom: 0;
+        left: 0;
+        text-align: center;
+        right: 0;
+        height: auto;
+        padding-top: 10px;
+        margin-top: 80px;
+    }
 }
 
 .menu {

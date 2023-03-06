@@ -9,28 +9,37 @@ import { LoginserviceService } from '../service/loginservice.service';
 })
 export class LoginComponent implements OnInit {
 
-  private loginservice!: LoginserviceService;
+
   loginform!: FormGroup;
   subimitted: boolean = false;
   returnurl!: string;
-
-  get fdata() {
-    return this.loginform.controls;
+  userinfo!: any;
+  message: string = '';
+  constructor(private formbuilder: FormBuilder,
+    private loginservice: LoginserviceService) {
+    this.loginform = this.formbuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required]
+    })
   }
+
   login() {
     this.subimitted = true;
     if (this.loginform.valid) {
       console.log("form submittted");
+      this.loginservice.checkLogincredential(this.loginform.value.email).subscribe(data => {
+        this.userinfo = data;
+        console.log(this.userinfo);
+        if (this.userinfo.password === this.loginform.value.password) {
+        }
+        else {
+          this.message = 'invalid id and password';
+        }
+      });
     }
-    this.loginservice.checkLogin(this.fdata.username.value, this.fdata.password.value)
+    else {
 
-  }
-
-  constructor(private formbuilder: FormBuilder) {
-    this.loginform = this.formbuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+    }
   }
 
   ngOnInit(): void {
