@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   subimitted: boolean = false;
   returnurl!: string;
   userinfo!: any;
-  message: string = '';
+  message = '';
   constructor(private formbuilder: FormBuilder,
     private loginservice: LoginserviceService) {
     this.loginform = this.formbuilder.group({
@@ -29,8 +29,11 @@ export class LoginComponent implements OnInit {
       console.log("form submittted");
       this.loginservice.checkLogincredential(this.loginform.value.email).subscribe(data => {
         this.userinfo = data;
-        console.log(this.userinfo);
+        console.log('keyboard', this.loginform.value.password);
+        console.log('database', this.userinfo.password);
+
         if (this.userinfo.password === this.loginform.value.password) {
+          console.log('your data is there');
         }
         else {
           this.message = 'invalid id and password';

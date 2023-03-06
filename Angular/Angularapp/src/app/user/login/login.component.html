@@ -4,9 +4,11 @@
             <h2 class="text-center p-3">Angular Login</h2>
 
             <form [formGroup]="loginform" (ngSubmit)="login()">
-                <div [ngIf]="loginform" [ngClass]="{'alert alert-danger':subimitted && loginform.invalid}" role="alert">
-                    <p>{{message}}</p>
+
+                <div [ngClass]="{'alert alert-danger':subimitted && message!=''}" role="alert">
+                    {{message}}
                 </div>
+
                 <div class="form-group mt-3">
                     <label for="username">User Name</label>
 
