@@ -9,11 +9,12 @@ import { LoginserviceService } from '../service/loginservice.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   registerform!: FormGroup;
   subimitted: boolean = false;
   returnurl!: string;
   message = "";
-
+  private userArr: any = [];
 
   constructor(private formbuilder: FormBuilder, private loginservice: LoginserviceService,
     private route: Router) {
@@ -30,18 +31,27 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+
     this.subimitted = true;
     if (this.registerform.valid) {
       console.log("form submittted");
       this.loginservice.registerUser(this.registerform.value).subscribe(data => {
         console.log(this.registerform.value);
-        console.log('registration sucess');
-        this.route.navigate(['login']);
-      });
 
+        this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+        this.userArr.push(this.registerform.value);
+        console.log(this.userArr);
+
+
+        localStorage.setItem('userData', JSON.stringify(this.userArr));
+        this.route.navigate(['login']);
+        console.log('registration sucess');
+        this.message = "Registration success";
+      });
     }
     else {
-      this.message = "invalid information";
+      //this.message = "invalid information";
     }
   }
 

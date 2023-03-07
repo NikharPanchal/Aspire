@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  link = '';
+  constructor() {
+    if (sessionStorage.getItem('user') != null) {
+      this.link = 'logout';
+    }
+    else {
+      this.link = 'login';
+    }
+  }
 
   ngOnInit(): void {
   }

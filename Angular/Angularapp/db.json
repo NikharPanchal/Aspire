@@ -1,25 +1,22 @@
 {
   "user": [
     {
-      "id": [
-        "",
-        null
-      ],
-      "fname": "admin",
-      "lname": "admin",
-      "email": "admin123@gmail.com",
-      "password": "Admin",
-      "role": "user",
-      "isactive": true
-    },
-    {
       "fname": "nikhar",
       "lname": "panchal",
       "email": "nikhar123@gmail.com",
       "password": "nikhar123",
       "role": "user",
-      "isactive": false,
-      "id": "ZAQPrRb"
+      "isactive": true,
+      "id": 1
+    },
+    {
+      "fname": "admin",
+      "lname": "admin",
+      "email": "admin123@gmail.com",
+      "password": "admin123",
+      "role": "admin",
+      "isactive": true,
+      "id": 2
     }
   ]
 }

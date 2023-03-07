@@ -2,17 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { LoginserviceService } from '../user/service/loginservice.service';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-user-dashboard',
+  templateUrl: './user-dashboard.component.html',
+  styleUrls: ['./user-dashboard.component.css']
 })
-export class AboutComponent implements OnInit {
+export class UserDashboardComponent implements OnInit {
+
   users: any;
   constructor(private loginservice: LoginserviceService) {
 
-
   }
-
   ngOnInit(): void {
     this.loginservice.getalldata().subscribe(data => {
       this.users = data;
