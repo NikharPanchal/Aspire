@@ -7,17 +7,11 @@ import { LoginserviceService } from '../user/service/loginservice.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  users: any;
-  constructor(private loginservice: LoginserviceService) {
 
-
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.loginservice.getalldata().subscribe(data => {
-      this.users = data;
-      console.log(this.users);
-    })
   }
 
 }

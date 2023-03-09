@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Angularapp';
+  title = 'Blog Site';
   loginform!: FormGroup;
   subimitted: boolean = false;
 

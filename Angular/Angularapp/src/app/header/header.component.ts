@@ -1,4 +1,6 @@
+import { flatten } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { LoginserviceService } from '../user/service/loginservice.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +10,20 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   link = '';
-  constructor() {
+  constructor(loginservice: LoginserviceService) {
+    this.isLogin();
+  }
+  isLogin() {
     if (sessionStorage.getItem('user') != null) {
-      this.link = 'logout';
-    }
-    else {
-      this.link = 'login';
+      return true;
+    } else {
+      return false;
     }
   }
 
+  logout() {
+    sessionStorage.clear();
+  }
   ngOnInit(): void {
   }
 

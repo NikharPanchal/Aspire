@@ -27,7 +27,9 @@
                         </li>
 
                         <li>
-                            <a routerLink="login" class="btn btn-primary">Login</a>
+                            <button class="btn btn-primary" *ngIf="!isLogin()"><a routerLink="login">Login</a></button>
+                            <button class="btn btn-primary" *ngIf="isLogin()" (click)="logout()"><a
+                                    routerLink="login">Logout</a></button>
                         </li>
                     </ul>
                 </div>

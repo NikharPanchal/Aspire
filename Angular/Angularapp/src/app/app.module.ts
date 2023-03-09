@@ -13,11 +13,9 @@ import { RegisterModule } from './user/register/register.module';
 import { HttpClientModule } from '@angular/common/http'
 import { LoginserviceService } from './user/service/loginservice.service';
 import { ServiceModule } from './service/service.module';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
-import { CommonModule } from '@angular/common';
+import { EditModule } from './user/edit/edit.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +37,7 @@ import { CommonModule } from '@angular/common';
     ServiceModule,
     AdminDashboardModule,
     UserDashboardModule,
+    EditModule
   ],
   providers: [LoginserviceService],
   bootstrap: [AppComponent]

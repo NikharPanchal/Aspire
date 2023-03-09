@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['admin-dashboard']);
           }
           if (this.userinfo[0].role === 'user') {
-            this.router.navigate(['about']);
+            this.router.navigate(['user-dashboard']);
           }
           sessionStorage.setItem('user', JSON.stringify(this.userinfo));
         }

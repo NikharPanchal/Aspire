@@ -17,6 +17,24 @@
       "role": "admin",
       "isactive": true,
       "id": 2
+    },
+    {
+      "id": 3,
+      "fname": "yash",
+      "lname": "nayi",
+      "email": "yash123@gmail.com",
+      "password": "yash123",
+      "role": "user",
+      "isactive": false
+    },
+    {
+      "id": 4,
+      "fname": "abc",
+      "lname": "abc1",
+      "email": "ab123@gmail.com",
+      "password": "abc123",
+      "role": "user",
+      "isactive": false
     }
   ]
 }
