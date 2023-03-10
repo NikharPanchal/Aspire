@@ -22,9 +22,8 @@ export class LoginserviceService {
     return this.http.post(this.myUrl, userData);
   }
 
-  checkLogincredential(logindata: any) {
-    console.log(logindata);
-    return this.http.get(this.myUrl + '/?email=' + logindata);
+  checkLogincredential(username: any) {
+    return this.http.get(this.myUrl + '/?email=' + username);
   }
 
   getUserInfoById(id: any): Observable<any> {

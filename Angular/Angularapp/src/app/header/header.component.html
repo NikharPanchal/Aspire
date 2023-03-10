@@ -1,15 +1,18 @@
-<header>
+<!-- <header>
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-3 col-3">
-                <div class="logo">
-
+                <div class="logo"> -->
+<!-- 
                 </div>
             </div>
-
             <div class="col-md-9 col-sm-9 col-9 text-end">
                 <div class="menu">
                     <ul>
+                        <li>
+                            <a routerLink="/admin-dashboard" *ngIf="dashboard!=''">{{dashboard}}</a>
+                        </li>
+
                         <li>
                             <a routerLink="home">Home</a>
                         </li>
@@ -23,17 +26,69 @@
                         </li>
 
                         <li>
-                            <a routerLink="contact">Contact</a>
+                            <a routerLink="contact">Contact</a> -->
+<!-- </li>
+
+                        <li>
+                            <a routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()">Login</button></a>
+                            <a routerLink="login"><button class="btn btn-primary" *ngIf="isLogin()"
+                                    (click)="logout()">Logout</button></a>
                         </li>
 
                         <li>
-                            <button class="btn btn-primary" *ngIf="!isLogin()"><a routerLink="login">Login</a></button>
-                            <button class="btn btn-primary" *ngIf="isLogin()" (click)="logout()"><a
-                                    routerLink="login">Logout</a></button>
+                            <div>
+                                <p class="username" *ngIf="username!=''"><i class="fa fa-user p-1"
+                                        aria-hidden="true"></i>{{username}}</p>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </div>
+        </div>
+    </div>
+</header> -->
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark p-2">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbarToggler3"
+                    aria-controls="myNavbarToggler3" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="#">Blog Website</a>
+                <div class="collapse navbar-collapse " id="myNavbarToggler3">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/admin-dashboard" *ngIf="dashboard!=''">{{dashboard}}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="/user-dashboard"
+                                *ngIf="userdashboard!=''">{{userdashboard}}</a>
+                        </li>
+
+                        <li class="nav-item py-1">
+                            <p class="username " *ngIf="username!=''"><i class="fa fa-user p-1"
+                                    aria-hidden="true"></i>{{username}}</p>
+                        </li>
+
+                        <li class="nav-item px-3 py-2">
+                            <a routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()">Login</button></a>
+                            <a routerLink="login"><button class="btn btn-primary" *ngIf="isLogin()"
+                                    (click)="logout()">Logout</button></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </div>
 </header>

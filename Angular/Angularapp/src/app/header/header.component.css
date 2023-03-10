@@ -1,4 +1,4 @@
-header {
+/* header {
     padding: 10px 0px;
     background: black;
 }
@@ -24,4 +24,38 @@ header {
 .menu ul li a:hover {
     color: coral;
     transition: 0.4 ease-in-out;
+} */
+.navbar-nav {
+    text-align: right;
+    padding: 10px;
+}
+
+.navbar .navbar-nav .nav-link {
+    list-style-type: none;
+    color: white;
+    display: inline-block;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: coral;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+.navbar-toggler {
+    color: white;
+}
+
+.username {
+    color: white;
+    margin-top: 10px;
+
+}
+
+#myNavbarToggler3 {
+    flex-direction: row-reverse !important;
 }

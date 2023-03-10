@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginserviceService } from '../service/loginservice.service';
+import { LoginserviceService } from '../service/authenticationService.service';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit {
 
 
         localStorage.setItem('userData', JSON.stringify(this.userArr));
-        this.route.navigate(['login']);
         console.log('registration sucess');
         this.message = "Registration success";
       });

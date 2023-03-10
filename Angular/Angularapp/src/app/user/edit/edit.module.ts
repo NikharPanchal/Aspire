@@ -5,7 +5,6 @@ import { EditRoutingModule } from './edit-routing.module';
 import { EditComponent } from './edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     EditComponent,
@@ -15,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     EditRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class EditModule { }

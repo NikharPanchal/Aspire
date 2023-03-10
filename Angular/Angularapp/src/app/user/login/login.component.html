@@ -15,18 +15,21 @@
                     <input type="text" formControlName="email"
                         [ngClass]="{'is-invalid':subimitted && loginform.controls.email.errors}" name="username"
                         class="form-control" class="form-control">
-
                 </div>
 
                 <div class="form-group mt-3">
                     <label for="password">Password</label>
-                    <input type="text" formControlName="password"
+                    <input [type]="password" formControlName="password"
                         [ngClass]="{'is-invalid':subimitted && loginform.controls.password.errors}"
                         class="form-control">
+
+                    <div class="col p-1">
+                        <input type="checkbox" (click)="showPassword()"> Show Password
+                    </div>
                 </div>
-                <div class="col-5 mt-3">
+                <!-- <div class="col-5 mt-3">
                     <a routerLink="/register">Don't have an account?</a>
-                </div>
+                </div> -->
                 <div class="text-center mt-3">
                     <input type="submit" value="Login" class="btn btn-success">
                 </div>

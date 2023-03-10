@@ -11,7 +11,7 @@ import { LoginModule } from './user/login/login.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterModule } from './user/register/register.module';
 import { HttpClientModule } from '@angular/common/http'
-import { LoginserviceService } from './user/service/loginservice.service';
+import { LoginserviceService } from './user/service/authenticationService.service';
 import { ServiceModule } from './service/service.module';
 import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
@@ -37,7 +37,8 @@ import { EditModule } from './user/edit/edit.module';
     ServiceModule,
     AdminDashboardModule,
     UserDashboardModule,
-    EditModule
+    EditModule,
+
   ],
   providers: [LoginserviceService],
   bootstrap: [AppComponent]
