@@ -10,12 +10,16 @@ export class LoginserviceService {
 
   constructor(private http: HttpClient,
     private route: Router) {
-    console.log(route.url);
+
   }
   myUrl = "http://localhost:3000/user";
 
-  getalldata() {
-    return this.http.get(this.myUrl)
+  getAllData() {
+    return this.http.get(this.myUrl);
+  }
+
+  getalluserdata() {
+    return this.http.get(this.myUrl + '/?role=user')
   }
 
   registerUser(userData: any): Observable<any> {
@@ -41,6 +45,15 @@ export class LoginserviceService {
     return this.http.patch(`${this.myUrl}/${userid}`, {
       isactive: true,
     })
+  }
+
+  isLoginUser() {
+    if (sessionStorage.getItem('user') != null) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
 }

@@ -26,6 +26,15 @@
       "password": "yash123",
       "role": "user",
       "isactive": false
+    },
+    {
+      "id": 4,
+      "fname": "arpit",
+      "lname": "patel",
+      "email": "arpit123@gmail.com",
+      "password": "arpit@123",
+      "role": "user",
+      "isactive": false
     }
   ]
 }

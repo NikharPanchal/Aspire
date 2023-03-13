@@ -2,8 +2,12 @@
     <div class="row">
         <div class="col-md-6 offset-md-3 shadow-lg p-3 my-5 bg-white rounded border border-radius">
             <h2 class="text-center p-3">User Registration</h2>
-            <div [ngClass]="{'alert alert-success':subimitted && registerform.valid && message!=null}" role="alert">
+            <div [ngClass]="{'alert alert-success':subimitted && registerform.valid && message!=''}" role="alert">
                 {{message}}
+            </div>
+
+            <div [ngClass]="{'alert alert-danger':subimitted && registerform.valid && emailmessage!=''}" role="alert">
+                {{emailmessage}}
             </div>
             <form [formGroup]="registerform" (ngSubmit)="register()">
 
@@ -30,9 +34,12 @@
 
                 <div class="form-group mt-3">
                     <label for="password">Password</label>
-                    <input type="password" formControlName="password"
+                    <input [type]="password" formControlName="password"
                         [ngClass]="{'is-invalid':subimitted && registerform.controls.password.errors}"
                         class="form-control">
+                    <div class="col p-1">
+                        <input type="checkbox" (click)="showPassword()"> Show Password
+                    </div>
                 </div>
 
                 <div class="text-center mt-3">

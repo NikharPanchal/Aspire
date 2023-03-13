@@ -14,7 +14,9 @@ export class RegisterComponent implements OnInit {
   subimitted: boolean = false;
   returnurl!: string;
   message = "";
+  emailmessage = "";
   private userArr: any = [];
+  password = 'password';
 
   constructor(private formbuilder: FormBuilder, private loginservice: LoginserviceService,
     private route: Router) {
@@ -24,7 +26,7 @@ export class RegisterComponent implements OnInit {
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required])],
       role: this.formbuilder.control('user'),
       isactive: this.formbuilder.control(false)
     })
@@ -33,28 +35,66 @@ export class RegisterComponent implements OnInit {
   register() {
 
     this.subimitted = true;
-    if (this.registerform.valid) {
-      console.log("form submittted");
-      this.loginservice.registerUser(this.registerform.value).subscribe(data => {
-        console.log(this.registerform.value);
+    if (this.subimitted) {
+      this.loginservice.checkLogincredential(this.registerform.value.email).subscribe((data: any) => {
+        console.log(data);
+        if (data != '') {
+          this.emailmessage = "Email is already exists.."
+        }
+        else {
+          if (this.registerform.valid) {
+            console.log("form submittted");
+            this.loginservice.registerUser(this.registerform.value).subscribe(data => {
+              console.log(this.registerform.value);
 
-        this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+              this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
 
-        this.userArr.push(this.registerform.value);
-        console.log(this.userArr);
+              this.userArr.push(this.registerform.value);
+              console.log(this.userArr);
 
 
-        localStorage.setItem('userData', JSON.stringify(this.userArr));
-        console.log('registration sucess');
-        this.message = "Registration success";
-      });
+              localStorage.setItem('userData', JSON.stringify(this.userArr));
+              console.log('registration sucess');
+              this.message = "Registration success";
+            });
+          }
+          else {
+            //this.message = "invalid information";
+          }
+        }
+      })
     }
-    else {
-      //this.message = "invalid information";
-    }
+    // if (this.registerform.valid) {
+    //   console.log("form submittted");
+    //   this.loginservice.registerUser(this.registerform.value).subscribe(data => {
+    //     console.log(this.registerform.value);
+
+    //     this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+    //     this.userArr.push(this.registerform.value);
+    //     console.log(this.userArr);
+
+
+    //     localStorage.setItem('userData', JSON.stringify(this.userArr));
+    //     console.log('registration sucess');
+    //     this.message = "Registration success";
+    //   });
+    // }
+    // else {
+    //   //this.message = "invalid information";
+    // }
   }
 
   ngOnInit(): void {
+  }
+
+  showPassword() {
+    if (this.password == 'password') {
+      this.password = 'text';
+    }
+    else {
+      this.password = 'password';
+    }
   }
 
 }

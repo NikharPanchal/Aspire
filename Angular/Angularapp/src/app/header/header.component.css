@@ -53,9 +53,12 @@
 .username {
     color: white;
     margin-top: 10px;
-
 }
 
 #myNavbarToggler3 {
     flex-direction: row-reverse !important;
+}
+
+.collapse .nav-link {
+    color: white;
 }

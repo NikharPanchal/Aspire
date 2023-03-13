@@ -21,15 +21,16 @@ export class EditComponent implements OnInit {
     private userservice: LoginserviceService) {
     console.log('constructor');
     this.updateform = this.formbuilder.group({
-      id: this.formbuilder.control([null, Validators.compose([Validators.required, Validators.minLength(5)])]),
-      fname: [null, Validators.required],
-      lname: [null, Validators.required],
-      email: [null, Validators.compose([Validators.required, Validators.email])],
-      password: [null, Validators.required],
+      id: this.formbuilder.control(['', Validators.compose([Validators.required, Validators.minLength(5)])]),
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.email])],
+      password: ['', Validators.required],
       role: this.formbuilder.control('user'),
       isactive: this.formbuilder.control(true)
     })
   }
+
   ngOnInit(): void {
     console.log('oninit');
     this.password = "password";

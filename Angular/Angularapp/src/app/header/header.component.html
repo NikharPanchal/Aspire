@@ -50,7 +50,7 @@
 <header>
     <div class="container-fluid">
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-dark p-2">
+            <nav class="navbar navbar-expand-lg navbar-light bg-dark p-3">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbarToggler3"
                     aria-controls="myNavbarToggler3" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -82,9 +82,11 @@
                         </li>
 
                         <li class="nav-item px-3 py-2">
-                            <a routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()">Login</button></a>
+                            <a routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()"><i
+                                        class="fa fa-sign-in" aria-hidden="true"></i> Login</button></a>
                             <a routerLink="login"><button class="btn btn-primary" *ngIf="isLogin()"
-                                    (click)="logout()">Logout</button></a>
+                                    (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                                    Logout</button></a>
                         </li>
                     </ul>
                 </div>

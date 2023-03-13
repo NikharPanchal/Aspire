@@ -33,7 +33,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginservice.getalldata().subscribe(data => {
+    this.loginservice.getalluserdata().subscribe(data => {
       this.users = data;
       console.log(this.users);
     })

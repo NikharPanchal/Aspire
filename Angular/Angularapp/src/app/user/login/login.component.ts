@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       this.loginservice.checkLogincredential(this.loginform.value.email).subscribe((data: any) => {
         this.userinfo = data;
         console.log(this.userinfo[0]);
-        if (this.userinfo[0].password === this.loginform.value.password && this.userinfo[0].isactive) {
+        if (this.userinfo[0] != undefined && this.userinfo[0].password === this.loginform.value.password && this.userinfo[0].email === this.loginform.value.email && this.userinfo[0].isactive) {
           if (this.userinfo[0].role === 'admin') {
             this.router.navigate(['admin-dashboard']);
           }
@@ -50,10 +50,10 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem('user', JSON.stringify(this.userinfo));
         }
         else {
-          this.message = 'Invalid Credential!!';
+          this.message = 'Please check your credentials and try again.';
         }
       }, (err) => {
-        console.log('err.message');
+        console.log(err);
       });
     }
     else {
