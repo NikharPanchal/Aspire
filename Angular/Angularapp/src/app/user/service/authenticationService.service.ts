@@ -55,5 +55,14 @@ export class LoginserviceService {
       return false;
     }
   }
+  isRoleAdmin() {
+    const sessionData = JSON.parse(sessionStorage.getItem('user') || '');
+    if (sessionData[0].role === 'admin') {
 
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
 }

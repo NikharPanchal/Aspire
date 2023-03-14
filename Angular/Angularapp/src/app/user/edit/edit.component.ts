@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginserviceService } from '../service/authenticationService.service';
 
@@ -10,12 +10,13 @@ import { LoginserviceService } from '../service/authenticationService.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-  updateform!: FormGroup;
+
   subimitted: boolean = false;
   message = '';
   userId: any;
-  password = '';
+  passwordcheck = '';
   editComponent!: EditComponent;
+  updateform: FormGroup;
 
   constructor(private formbuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
     private userservice: LoginserviceService) {
@@ -31,9 +32,18 @@ export class EditComponent implements OnInit {
     })
   }
 
+  // updateform = new FormGroup({
+  //   id: new FormControl({ value: 0, disabled: true }),
+  //   fname: new FormControl('', Validators.required),
+  //   lname: new FormControl('', Validators.required),
+  //   email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
+  //   password: new FormControl('', Validators.required)
+
+  // })
+
   ngOnInit(): void {
     console.log('oninit');
-    this.password = "password";
+    this.passwordcheck = "password";
     this.userId = this.route.snapshot.params['userId'];
     console.log("userid", this.userId);
     this.userservice.getUserInfoById(this.userId).subscribe((data) => {
@@ -53,7 +63,6 @@ export class EditComponent implements OnInit {
     });
   }
   update() {
-    this.editComponent;
     console.log('update function');
     this.subimitted = true;
     if (this.updateform.valid) {
@@ -67,11 +76,11 @@ export class EditComponent implements OnInit {
     }
   }
   showPassword() {
-    if (this.password == 'password') {
-      this.password = 'text';
+    if (this.passwordcheck == 'password') {
+      this.passwordcheck = 'text';
     }
     else {
-      this.password = 'password';
+      this.passwordcheck = 'password';
     }
   }
 }
