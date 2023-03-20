@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Users } from '../data-table.component';
 
 @Injectable({
   providedIn: 'root'
@@ -16,4 +15,7 @@ export class UserserviceService {
     return this.http.get(this.myUrl);
   }
 
+  deleteUser(userId: any): Observable<any> {
+    return this.http.delete("http://localhost:8081/user/" + userId);
+  }
 }

@@ -40,6 +40,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { HttpClientModule } from '@angular/common/http';
+import { AddUserModule } from './add-user/add-user.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatSortModule,
+    MatIconModule,
+    AddUserModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
