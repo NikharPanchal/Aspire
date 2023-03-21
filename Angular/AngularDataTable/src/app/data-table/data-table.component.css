@@ -5,7 +5,3 @@ table {
 .col-val {
     font-size: 12px;
 }
-
-mat-paginator {
-    width: 100%;
-}

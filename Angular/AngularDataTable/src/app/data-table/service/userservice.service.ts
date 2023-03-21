@@ -18,4 +18,8 @@ export class UserserviceService {
   deleteUser(userId: any): Observable<any> {
     return this.http.delete("http://localhost:8081/user/" + userId);
   }
+
+  saveUser(userData: any): Observable<any> {
+    return this.http.post("http://localhost:8081/save", userData);
+  }
 }

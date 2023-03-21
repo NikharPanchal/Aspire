@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,9 +41,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { HttpClientModule } from '@angular/common/http';
 import { AddUserModule } from './add-user/add-user.module';
+import { HeaderComponent } from './header/header.component';
+import { DataTableModule } from './data-table/data-table.module';
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     DataTableComponent
   ],
   imports: [
@@ -59,7 +62,15 @@ import { AddUserModule } from './add-user/add-user.module';
     MatSortModule,
     MatIconModule,
     AddUserModule,
-    MatDialogModule
+    MatDialogModule,
+    DataTableModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule, MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

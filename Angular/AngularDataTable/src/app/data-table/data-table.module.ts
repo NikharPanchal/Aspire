@@ -8,8 +8,6 @@ import { DeletedialogComponent } from './deletedialog/deletedialog.component';
 
 @NgModule({
   declarations: [
-
-  
     DeletedialogComponent
   ],
   imports: [

@@ -1,2 +1,51 @@
-<p>add-user works!</p>
-<router-outlet></router-outlet>
+<h2 class="text-center p-3">Add New User</h2>
+<mat-card>
+    <mat-card-content>
+        <form class="example-form" [formGroup]="registerform" (ngSubmit)="submit()">
+            <div class="row" *ngIf="showMsg">
+                <div class="col-xs-12">
+                    <p class="alert alert-success">
+                        <strong>Registration Success!</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="username">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input class="input" formControlName="userName" name="username" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.userName.errors">username invalid</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="password">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="userPassword" [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="registerform.controls.userPassword.errors">password invalid</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Textarea</mat-label>
+                    <textarea matInput formControlName="userAddress" required></textarea>
+                    <mat-error *ngIf="registerform.controls.userAddress.errors">address required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Birthdate</mat-label>
+                    <input type="date" formControlName="dob" matInput required>
+                    <mat-error *ngIf="registerform.controls.dob.errors">birthdate required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <button mat-flat-button color="primary">Register</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
