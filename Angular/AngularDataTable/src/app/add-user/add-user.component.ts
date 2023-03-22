@@ -10,6 +10,7 @@ import { UserserviceService } from '../data-table/service/userservice.service';
 })
 export class AddUserComponent implements OnInit {
   showMsg: boolean = false;
+  userInfo: any;
   constructor(private formbuilder: FormBuilder, private service: UserserviceService, private route: ActivatedRoute) { }
 
   submit() {
@@ -26,6 +27,7 @@ export class AddUserComponent implements OnInit {
 
   loadform() {
     this.registerform = new FormGroup({
+      id: new FormControl(''),
       userName: new FormControl('', Validators.compose([Validators.required, Validators.pattern(/^(?!.*?[^aeiou]{5})(?!.*?[aeiou]{3})[a-z]*$/)])),
       userPassword: new FormControl('', Validators.compose([Validators.required])),
       userAddress: new FormControl('', [Validators.required]),
@@ -36,6 +38,10 @@ export class AddUserComponent implements OnInit {
     this.loadform();
     const userId = this.route.snapshot.params['userId'];
     console.log(userId);
+    this.service.getUserById(userId).subscribe((data: any) => {
+      this.userInfo = data;
+      console.log(this.userInfo);
+      this.registerform.patchValue(data);
+    })
   }
-
 }

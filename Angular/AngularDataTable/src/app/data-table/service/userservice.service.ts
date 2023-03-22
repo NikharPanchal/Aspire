@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -21,5 +22,10 @@ export class UserserviceService {
 
   saveUser(userData: any): Observable<any> {
     return this.http.post("http://localhost:8081/save", userData);
+  }
+
+  getUserById(userId: any): Observable<any> {
+    return this.http.get("http://localhost:8081/user/" + userId);
+
   }
 }
