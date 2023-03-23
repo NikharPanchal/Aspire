@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -25,13 +25,17 @@ export class DataTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.service.getAllUser().subscribe(data => {
+    this.service.getAllUser().subscribe((data) => {
       this.user = data;
       console.log(this.user);
       this.dataSource = new MatTableDataSource(this.user);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-    });
+    },
+      (error: HttpHeaderResponse) => {
+        console.log(error);
+      }
+    );
   }
 
   ngAfterViewInit() {
