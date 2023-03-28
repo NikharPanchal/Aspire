@@ -18,6 +18,7 @@
                 <button mat-menu-item>Pink & Blue-gray</button>
                 <button mat-menu-item>Purple & Green</button>
             </mat-menu>
+            <a mat-button mat-raised-button color="Basic" routerLink="/login"> Login </a>
         </div>
     </mat-toolbar-row>
 </mat-toolbar>
@@ -31,7 +32,7 @@
             <a mat-list-item routerLink="data-table"> Datatable </a>
             <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
             <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-
+            <a mat-list-item routerLink="/login"> Login </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>

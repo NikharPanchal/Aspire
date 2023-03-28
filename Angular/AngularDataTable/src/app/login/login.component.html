@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-content>
+        <h2>Login </h2>
+        <div class="row" *ngIf="msg! && status==true && loginform.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{msg}}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="row" *ngIf="msg! && status==false && loginform.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-warning">
+                    <strong>{{msg}}</strong>
+                </p>
+            </div>
+        </div>
+        <form [formGroup]="loginform" (submit)="login()">
+            <div class="username">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input class="input" formControlName="userName" name="username" matInput maxlength="25">
+                    <mat-error *ngIf="loginform.controls.userName.errors">username invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="password">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="userPassword" [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginform.controls.userPassword.errors">password invalid</mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-flat-button color="primary">Login</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

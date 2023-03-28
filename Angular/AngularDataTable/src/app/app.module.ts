@@ -43,6 +43,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddUserModule } from './add-user/add-user.module';
 import { HeaderComponent } from './header/header.component';
 import { DataTableModule } from './data-table/data-table.module';
+import { LoginRoutingModule } from './login/login-routing.module';
+import { LoginModule } from './login/login.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,8 @@ import { DataTableModule } from './data-table/data-table.module';
     MatSlideToggleModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule, MatMenuModule
+    MatInputModule, MatMenuModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
