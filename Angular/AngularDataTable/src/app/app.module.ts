@@ -39,7 +39,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AddUserModule } from './add-user/add-user.module';
 import { HeaderComponent } from './header/header.component';
 import { DataTableModule } from './data-table/data-table.module';
@@ -49,7 +49,7 @@ import { LoginModule } from './login/login.module';
   declarations: [
     AppComponent,
     HeaderComponent,
-    DataTableComponent
+    DataTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +73,8 @@ import { LoginModule } from './login/login.module';
     MatListModule,
     MatFormFieldModule,
     MatInputModule, MatMenuModule,
-    LoginModule
+    LoginModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
