@@ -15,8 +15,11 @@ export class UserserviceService {
   getAllUser(): Observable<any> {
     let headers = new HttpHeaders();
 
-    headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
-    headers = headers.append("Content-Type", "application/x-www-form-urlencoded");
+    headers.append("Authorization", "Basic " + btoa("admin:admin"));
+    headers.append('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:8081/users');
+    headers.append('Access-Control-Allow-Headers', 'Content-Type');
+    headers.append('Access-Control-Allow-Methods', 'GET');
 
     return this.http.get(this.myUrl, { headers });
   }

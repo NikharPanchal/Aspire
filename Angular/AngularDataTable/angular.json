@@ -72,7 +72,8 @@
               "browserTarget": "AngularDataTable:build:production"
             },
             "development": {
-              "browserTarget": "AngularDataTable:build:development"
+              "browserTarget": "AngularDataTable:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
