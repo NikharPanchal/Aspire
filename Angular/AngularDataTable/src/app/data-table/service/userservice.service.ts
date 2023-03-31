@@ -8,20 +8,17 @@ import { Observable } from 'rxjs';
 })
 export class UserserviceService {
 
-  myUrl = "http://localhost:8081/users";
+  myUrl = "http://localhost:8081/api";
 
   constructor(private http: HttpClient) { }
 
-  getAllUser(): Observable<any> {
+  getAllUser() {
     let headers = new HttpHeaders();
 
-    headers.append("Authorization", "Basic " + btoa("admin:admin"));
-    headers.append('Content-Type', 'application/json');
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:8081/users');
-    headers.append('Access-Control-Allow-Headers', 'Content-Type');
-    headers.append('Access-Control-Allow-Methods', 'GET');
+    headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
+    headers = headers.append("Content-Type", "application/json");
 
-    return this.http.get(this.myUrl, { headers });
+    return this.http.get("http://localhost:8081/api/users", { headers });
   }
 
   deleteUser(userId: any): Observable<any> {
@@ -29,23 +26,24 @@ export class UserserviceService {
     let password = 'admin';
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.delete(`${"http://localhost:8081/user/"}${userId}`, { headers });
+    return this.http.delete(`${"http://localhost:8081/api/user/"}${userId}`, { headers });
   }
 
   saveUser(userData: any): Observable<any> {
     let headers = new HttpHeaders();
 
     headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
+    headers = headers.append("Content-Type", "application/json");
 
-    return this.http.post("http://localhost:8081/save", userData, { headers });
+    return this.http.post("http://localhost:8081/api/save", userData, { headers });
   }
 
   getUserById(userId: any): Observable<any> {
-    let username = 'admin';
-    let password = 'admin';
+    let headers = new HttpHeaders();
 
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get(`${"http://localhost:8081/user/"}${userId}`, { headers });
+    headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
+    headers = headers.append("Content-Type", "application/json");
+    return this.http.get(`${"http://localhost:8081/api/user/"}${userId}`, { headers });
   }
 
   checkLoginCredential(userData: any) {
@@ -53,6 +51,6 @@ export class UserserviceService {
 
     headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
     headers = headers.append("Content-Type", "application/json");
-    return this.http.post("http://localhost:8081/token", userData, { headers });
+    return this.http.post("http://localhost:8081/api/token", userData, { headers });
   }
 }

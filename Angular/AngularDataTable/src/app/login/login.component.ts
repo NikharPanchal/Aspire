@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserserviceService } from '../data-table/service/userservice.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   hide: boolean = true;
   msg: any;
   status: boolean | undefined;
-  constructor(private service: UserserviceService) { }
+  constructor(private service: UserserviceService, private router: Router) { }
 
   ngOnInit(): void {
     this.loginform = new FormGroup({
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit {
       console.log(data);
       this.msg = "success",
         this.status = true;
+      this.router.navigate(['/welcome']);
     }, (err) => {
       console.warn('invalid credential');
       this.msg = 'invalid username and password..';

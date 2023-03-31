@@ -45,6 +45,7 @@ import { HeaderComponent } from './header/header.component';
 import { DataTableModule } from './data-table/data-table.module';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginModule } from './login/login.module';
+import { WelcomeModule } from './welcome/welcome.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,6 +75,7 @@ import { LoginModule } from './login/login.module';
     MatFormFieldModule,
     MatInputModule, MatMenuModule,
     LoginModule,
+    WelcomeModule
 
   ],
   providers: [],
