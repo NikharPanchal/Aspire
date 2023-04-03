@@ -42,6 +42,7 @@ export class EditComponent implements OnInit {
   // })
 
   ngOnInit(): void {
+
     console.log('oninit');
     this.passwordcheck = "password";
     this.userId = this.route.snapshot.params['userId'];
