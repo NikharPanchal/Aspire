@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
 
   login() {
     console.log(this.loginform.value);
-    this.service.checkLoginCredential(this.loginform.value).subscribe((data: any) => {
+    this.service.checkLoginCredential(this.loginform.value).then((data: any) => {
       console.log(data);
       this.msg = "success",
         this.status = true;
       this.router.navigate(['/welcome']);
-    }, (err) => {
+    }, (err: any) => {
       console.warn('invalid credential');
       this.msg = 'invalid username and password..';
       this.status = false;
