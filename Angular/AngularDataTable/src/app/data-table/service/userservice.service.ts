@@ -55,4 +55,14 @@ export class UserserviceService {
         return response;
       });
   }
+
+  saveFile(file: any) {
+    let headers = new HttpHeaders();
+    headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
+    headers.append('Content-Type', 'multipart/form-data');
+    headers.set('Accept', 'application/json');
+    const formData = new FormData();
+    formData.append('image', file);
+    return this.http.post<any>("http://localhost:8081/api/savefile", formData, { headers });
+  }
 }

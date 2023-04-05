@@ -46,11 +46,13 @@ import { DataTableModule } from './data-table/data-table.module';
 import { LoginRoutingModule } from './login/login-routing.module';
 import { LoginModule } from './login/login.module';
 import { WelcomeModule } from './welcome/welcome.module';
+import { ImageComponent } from './image/image.component';
+import { ImageModule } from './image/image.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DataTableComponent,
+    DataTableComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +77,8 @@ import { WelcomeModule } from './welcome/welcome.module';
     MatFormFieldModule,
     MatInputModule, MatMenuModule,
     LoginModule,
-    WelcomeModule
+    WelcomeModule,
+    ImageModule
 
   ],
   providers: [],
