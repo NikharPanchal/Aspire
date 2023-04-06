@@ -17,7 +17,7 @@ export class UserserviceService {
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    return this.http.get("http://localhost:8081/api/users", { headers });
+    return this.http.get("http://localhost:8081/api/users");
   }
 
   deleteUser(userId: any): Observable<any> {
@@ -51,18 +51,13 @@ export class UserserviceService {
       .toPromise()
       .then(response => {
         localStorage.setItem('token', response.token);
-
         return response;
       });
   }
 
-  saveFile(file: any) {
-    let headers = new HttpHeaders();
-    headers = headers.append("Authorization", "Basic " + btoa("admin:admin"));
-    headers.append('Content-Type', 'multipart/form-data');
-    headers.set('Accept', 'application/json');
-    const formData = new FormData();
-    formData.append('image', file);
-    return this.http.post<any>("http://localhost:8081/api/savefile", formData, { headers });
+  saveFile(file: File) {
+    let formData = new FormData();
+    formData.append('img', file);
+    return this.http.post("http://localhost:8081/api/savefile", formData);
   }
 }

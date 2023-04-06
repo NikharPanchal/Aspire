@@ -18,9 +18,30 @@ export class ImageComponent implements OnInit {
       image: new FormControl('', Validators.required)
     })
   }
+
+  selectFile(event: any) {
+    const file = event.target.files.item(0);
+
+    if (file.type.match('image.*')) {
+      var size = event.target.files[0].size;
+      if (size > 1000000) {
+        alert("size must not exceeds 1 MB");
+      }
+      else {
+        this.selectedFiles = event.target.files;
+      }
+    } else {
+      alert('invalid format!');
+    }
+
+  }
+  addTagToSelectedList(value: any) {
+    throw new Error('Method not implemented.');
+  }
+
   storeImg() {
-    console.log(this.imageform.value.image);
-    this.service.saveFile(this.imageform).subscribe((data) => {
+    const formData = new FormData();
+    this.service.saveFile(this.imageform.value.image).subscribe((data) => {
       console.log(data);
     })
   }

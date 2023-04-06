@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-content>
         <h2>Storage Image and PDF </h2>
-        <form [formGroup]="imageform" (submit)="storeImg()" enctype="multipart/form-data">
+        <form [formGroup]="imageform" (submit)="storeImg()">
             <div class="image">
                 <!-- <mat-form-field class="full-width" appearance="outline">
                     <mat-label>Upload Image</mat-label>
@@ -11,7 +11,7 @@
                     <mat-error *ngIf="imageform.invalid">Please select an image file.</mat-error>
                 </mat-form-field> -->
 
-                <input type="file" formControlName="image" class="input">
+                <input type="file" (change)="selectFile($event)" formControlName="image" class="input">
                 <mat-error *ngIf="imageform.invalid">Please select an image file.</mat-error>
 
             </div>
