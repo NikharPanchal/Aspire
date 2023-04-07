@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -15,19 +15,11 @@ export class LoginserviceService {
   myUrl = "http://localhost:3000/user";
 
   getAllData() {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get(this.myUrl, { headers: headers });
+    return this.http.get(this.myUrl);
   }
 
   getalluserdata() {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get("http://localhost:8080/blog/hasuser", { headers: headers })
+    return this.http.get(this.myUrl + '/?role=user')
   }
 
   registerUser(userData: any): Observable<any> {

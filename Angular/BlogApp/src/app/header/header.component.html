@@ -1,0 +1,40 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+        </button>
+        <h1>Angular App</h1>
+        <span class="menu-spacer"></span>
+        <div>
+            <a mat-button routerLink="/home"> Home </a>
+            <a mat-button routerLink="/about"> About Us </a>
+            <a mat-button routerLink="/contact"> Contacts </a>
+            <a mat-button routerLink="data-table"> DataTable </a>
+
+            <a mat-button mat-raised-button color="Basic" *ngIf="!isLogin" routerLink="/login"> Login </a>
+
+            <a mat-button mat-raised-button color="Basic" (click)="logout()" *ngIf="isLogin" routerLink="/login"> Logout
+            </a>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/home"> Home </a>
+            <a mat-list-item> About Us </a>
+            <a mat-list-item> Contacts </a>
+            <a mat-list-item routerLink="data-table"> Datatable </a>
+            <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+            <a mat-list-item routerLink="/login" *ngIf="!isLogin"> Login </a>
+
+            <a mat-list-item (click)="logout()" *ngIf="isLogin"> Logout </a>
+
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 91vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

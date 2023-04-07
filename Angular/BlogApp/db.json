@@ -1,0 +1,40 @@
+{
+  "user": [
+    {
+      "fname": "nikhar",
+      "lname": "panchal",
+      "email": "nikhar123@gmail.com",
+      "password": "nikhar123",
+      "role": "user",
+      "isactive": true,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "fname": "admin",
+      "lname": "admin",
+      "email": "admin123@gmail.com",
+      "password": "admin123",
+      "role": "admin",
+      "isactive": true
+    },
+    {
+      "id": 3,
+      "fname": "yash",
+      "lname": "nayi",
+      "email": "yash123@gmail.com",
+      "password": "yash123",
+      "role": "user",
+      "isactive": false
+    },
+    {
+      "id": 4,
+      "fname": "arpit",
+      "lname": "patel",
+      "email": "arpit123@gmail.com",
+      "password": "arpit@123",
+      "role": "user",
+      "isactive": false
+    }
+  ]
+}

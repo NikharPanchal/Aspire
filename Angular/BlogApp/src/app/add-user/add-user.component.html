@@ -1,0 +1,59 @@
+<!-- <h2 class="text-center p-3">Add New User</h2> -->
+<mat-card>
+    <mat-card-content>
+        <div class="row" *ngIf="showMsg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Success!</strong>
+                </p>
+            </div>
+        </div>
+        <form class="example-form" [formGroup]="registerform" (ngSubmit)="submit()">
+
+
+            <!-- <input formControlName="id" name="id" hidden maxlength="25"> -->
+
+            <div class="firstname">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input class="input" formControlName="fname" name="fname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.fname.errors">First Name invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="lastname">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input class="input" formControlName="lname" name="lname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.lname.errors">Last Name invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="email">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input class="input" formControlName="email" name="lname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.email.errors">Email invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="password">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="registerform.controls.password.errors">password invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <button mat-flat-button color="primary">Register</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

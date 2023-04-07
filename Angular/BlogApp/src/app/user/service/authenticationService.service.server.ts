@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginserviceService {
+export class LoginserviceServiceServer {
 
   constructor(private http: HttpClient,
     private route: Router) {
@@ -19,19 +19,19 @@ export class LoginserviceService {
     let password = 'admin';
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get(this.myUrl, { headers: headers });
+    return this.http.get("http://localhost:8080/blog/hasuser", { headers: headers })
   }
 
   getalluserdata() {
+    return this.http.get(this.myUrl + '/?role=user')
+  }
+
+  registerUser(userData: any): Observable<any> {
     let username = 'admin';
     let password = 'admin';
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get("http://localhost:8080/blog/hasuser", { headers: headers })
-  }
-
-  registerUser(userData: any): Observable<any> {
-    return this.http.post(this.myUrl, userData);
+    return this.http.post("http://localhost:8080/blog/save", userData, { headers: headers });
   }
 
   checkLogincredential(username: any) {

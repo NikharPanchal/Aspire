@@ -1,0 +1,55 @@
+<div class="container-fluid login">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 shadow-lg p-3 my-5 bg-white rounded border border-radius">
+            <h2 class="text-center p-3">User Registration</h2>
+            <div [ngClass]="{'alert alert-success':subimitted && registerform.valid && message!=''}" role="alert">
+                {{message}}
+            </div>
+
+            <div [ngClass]="{'alert alert-danger':subimitted && registerform.valid && emailmessage!=''}" role="alert">
+                {{emailmessage}}
+            </div>
+            <form [formGroup]="registerform" (ngSubmit)="register()">
+
+                <div class="form-group mt-3">
+                    <label for="firstname">First Name</label>
+                    <input type="text" formControlName="fname"
+                        [ngClass]=" {'is-invalid':subimitted && registerform.controls.fname.errors}" name="firstname"
+                        class="form-control" class="form-control">
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" formControlName="lname"
+                        [ngClass]="{'is-invalid':subimitted && registerform.controls.lname.errors}" name="lastname"
+                        class="form-control" class="form-control">
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="email">Email address</label>
+                    <input type="text" formControlName="email"
+                        [ngClass]="{'is-invalid':subimitted && registerform.controls.email.errors}" name="email"
+                        class="form-control" class="form-control">
+                </div>
+
+                <div class="form-group mt-3">
+                    <label for="password">Password</label>
+                    <input [type]="password" formControlName="password"
+                        [ngClass]="{'is-invalid':subimitted && registerform.controls.password.errors}"
+                        class="form-control">
+                    <div class="col p-1">
+                        <input type="checkbox" (click)="showPassword()"> Show Password
+                    </div>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a routerLink="/admin-dashboard" class="btn btn-success">Back to Dashboard</a>
+                </div>
+                <div class="text-center mt-3">
+                    <input type="submit" value="Register" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
