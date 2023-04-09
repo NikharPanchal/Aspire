@@ -48,12 +48,13 @@ import { AdminDashboardModule } from './admin-dashboard/admin-dashboard.module';
 import { LoginserviceService } from './user/service/authenticationService.service';
 import { AddUserModule } from './add-user/add-user.module';
 import { LoginserviceServiceServer } from './user/service/authenticationService.service.server';
+import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent
-
   ],
   imports: [
     BrowserModule,
@@ -78,7 +79,9 @@ import { LoginserviceServiceServer } from './user/service/authenticationService.
     HomeRoutingModule,
     LoginModule,
     AdminDashboardModule,
-    AddUserModule
+    AddUserModule,
+    UserDashboardModule,
+    ContactModule
   ],
   providers: [LoginserviceServiceServer],
   bootstrap: [AppComponent]

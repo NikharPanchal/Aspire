@@ -7,25 +7,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isLogin!: boolean;
+  link = '';
+  username = '';
+  dashboard = '';
+  userdashboard = '';
+  sessionData: any;
 
-  constructor() { }
+  constructor() {
+    this.isLogin();
+   }
+
+  isLogin() {
+    this.ngOnInit();
+    if (sessionStorage.getItem('user') != null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   ngOnInit(): void {
-    const token = localStorage.getItem("token");
-    console.log(token);
+    if (sessionStorage.getItem('user') != null) {
+      this.sessionData = JSON.parse(sessionStorage.getItem('user') || '');
 
-    if (token != null) {
-      this.isLogin = true;
-    }
-    else {
-      this.isLogin = false;
+      this.username = `Welcome ,${this.sessionData[0].fname} `
+      if (this.sessionData[0].role == 'admin') {
+        this.dashboard = 'User Data';
+      }
+      if (this.sessionData[0].role == 'user') {
+        this.userdashboard = 'My Blog';
+      }
+    } else {
+      this.username = '';
+      this.dashboard = '';
+      this.userdashboard = '';
     }
   }
 
   logout() {
-    alert("logout success");
-    this.isLogin = false;
+    this.ngOnInit();
+    sessionStorage.clear();
   }
 
 }

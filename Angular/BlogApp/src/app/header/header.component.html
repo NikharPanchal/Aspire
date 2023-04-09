@@ -9,13 +9,18 @@
             <a mat-button routerLink="/home"> Home </a>
             <a mat-button routerLink="/about"> About Us </a>
             <a mat-button routerLink="/contact"> Contacts </a>
-            <a mat-button routerLink="data-table"> DataTable </a>
+            <a mat-button routerLink="/admin-dashboard" *ngIf="dashboard!=''"> {{dashboard}} </a>
+            <a mat-button routerLink="/user-dashboard" *ngIf="userdashboard!=''"> {{userdashboard}} </a>
 
-            <a mat-button mat-raised-button color="Basic" *ngIf="!isLogin" routerLink="/login"> Login </a>
-
-            <a mat-button mat-raised-button color="Basic" (click)="logout()" *ngIf="isLogin" routerLink="/login"> Logout
-            </a>
+            <a  mat-raised-button routerLink="login" *ngIf="!isLogin()"> Login</a>
+            
+            <a  mat-raised-button routerLink="login" *ngIf="isLogin()"
+            (click)="logout()">
+            Logout</a>
+           
         </div>
+        <span class="spacer"></span>
+        <span class="welcome-msg" *ngIf="username!=''">{{username}}</span>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -26,9 +31,15 @@
             <a mat-list-item> Contacts </a>
             <a mat-list-item routerLink="data-table"> Datatable </a>
             <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
-            <a mat-list-item routerLink="/login" *ngIf="!isLogin"> Login </a>
+            <!-- <a mat-list-item routerLink="/login" *ngIf="!isLogin"> Login </a>
 
-            <a mat-list-item (click)="logout()" *ngIf="isLogin"> Logout </a>
+            <a mat-list-item (click)="logout()" *ngIf="isLogin"> Logout </a> -->
+            <a  mat-list-item routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()"><i
+                class="fa fa-sign-in" aria-hidden="true"></i> Login</button></a>
+            
+            <a  mat-list-item routerLink="login"><button class="btn btn-primary" *ngIf="isLogin()"
+            (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
+            Logout</button></a>
 
         </mat-nav-list>
     </mat-sidenav>

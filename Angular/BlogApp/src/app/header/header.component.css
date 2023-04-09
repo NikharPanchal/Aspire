@@ -1,0 +1,6 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+  .welcome-msg {
+    justify-content: flex-end;
+  }

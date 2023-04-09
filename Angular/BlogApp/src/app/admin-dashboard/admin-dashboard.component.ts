@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { LoginserviceServiceServer } from '../user/service/authenticationService.service.server';
+import { MatDialog, MatDialogRef, matDialogAnimations } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -19,7 +20,8 @@ export class AdminDashboardComponent implements OnInit {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'password', 'role', 'isactive', 'edit', 'delete'];
   constructor(private service: LoginserviceServiceServer,
-    private httpclient: HttpClient, private router: Router) {
+    private httpclient: HttpClient, private router: Router,
+    private dialog:MatDialog) {
   }
 
   ngOnInit(): void {
@@ -36,15 +38,17 @@ export class AdminDashboardComponent implements OnInit {
     );
   }
 
-  ngAfterViewInit() {
-  }
-
   deleteUser(id: any): void {
     console.log(id);
     this.service.deleteUser(id).subscribe(data => {
       this.ngOnInit();
     });
   }
+
+   opendialog() {
+    alert('work');
+  }
+
 }
 
 export interface Users {
@@ -56,3 +60,10 @@ export interface Users {
   role: string;
   isactive: boolean;
 }
+// @Component({
+//   selector: 'dialog-animations-example-dialog',
+//   templateUrl: 'dialog-animations-example-dialog.html',
+// })
+// export class DialogAnimationsExampleDialog {
+//   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
+// }
