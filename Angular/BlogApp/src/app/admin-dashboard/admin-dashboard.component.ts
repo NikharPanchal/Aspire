@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaderResponse } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { LoginserviceServiceServer } from '../user/service/authenticationService.service.server';
-import { MatDialog, MatDialogRef, matDialogAnimations } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, matDialogAnimations, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -13,15 +13,17 @@ import { MatDialog, MatDialogRef, matDialogAnimations } from '@angular/material/
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   user: any;
+  deleteId: any;
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = ['id', 'fname', 'lname', 'email', 'password', 'role', 'isactive', 'edit', 'delete'];
   constructor(private service: LoginserviceServiceServer,
     private httpclient: HttpClient, private router: Router,
-    private dialog:MatDialog) {
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -37,18 +39,41 @@ export class AdminDashboardComponent implements OnInit {
       }
     );
   }
-
-  deleteUser(id: any): void {
-    console.log(id);
-    this.service.deleteUser(id).subscribe(data => {
-      this.ngOnInit();
-    });
+  changeStatus(id: any) {
+    this.dialog.open(ChangeStatusDialog, {
+      width: '350px',
+    }).afterClosed().subscribe((result) => {
+      if (result == true) {
+        // this.service.updateStatus(id).subscribe((data) => {
+        //   this.ngOnInit();
+        // });
+        this.service.updateStatus(id).subscribe((data) => {
+          console.log(data);
+          this.ngOnInit();
+        });
+      }
+    })
   }
+  // deleteUser(id: any): void {
+  //   console.log(id);
+  //   this.deleteId = id;
+  //   this.service.deleteUser(id).subscribe((data) => {
+  //     this.ngOnInit();
+  //   });
 
-   opendialog() {
-    alert('work');
+  // }
+
+  opendialog(id: any): void {
+    this.dialog.open(DialogAnimationsExampleDialog, {
+      width: '350px',
+    }).afterClosed().subscribe((result) => {
+      if (result == true) {
+        this.service.deleteUser(id).subscribe((data) => {
+          this.ngOnInit();
+        });
+      }
+    })
   }
-
 }
 
 export interface Users {
@@ -60,10 +85,26 @@ export interface Users {
   role: string;
   isactive: boolean;
 }
-// @Component({
-//   selector: 'dialog-animations-example-dialog',
-//   templateUrl: 'dialog-animations-example-dialog.html',
-// })
-// export class DialogAnimationsExampleDialog {
-//   constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) {}
-// }
+@Component({
+  selector: 'dialog-animations-example-dialog',
+  templateUrl: 'dialog-animations-example-dialog.html',
+})
+export class DialogAnimationsExampleDialog {
+
+  public deleteConfirm() {
+    this.dialogRef.close(true);
+
+  }
+  constructor(public dialogRef: MatDialogRef<DialogAnimationsExampleDialog>) { }
+}
+
+@Component({
+  selector: 'change-status-dialog',
+  templateUrl: 'status-dialog.html',
+})
+export class ChangeStatusDialog {
+  updateStatus() {
+    this.dialogRef.close(true);
+  }
+  constructor(public dialogRef: MatDialogRef<ChangeStatusDialog>) { }
+}

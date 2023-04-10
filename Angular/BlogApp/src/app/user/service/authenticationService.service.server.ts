@@ -1,18 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginserviceServiceServer {
+  token: any;
+  username: any;
+  role: any;
 
   constructor(private http: HttpClient,
-    private route: Router) {
+    private route: Router, private jwtHelper: JwtHelperService) {
 
   }
-  myUrl = "http://localhost:3000/user";
+  myUrl = "http://localhost:8080/blog";
 
   getAllData() {
     let username = 'admin';
@@ -34,29 +38,59 @@ export class LoginserviceServiceServer {
     return this.http.post("http://localhost:8080/blog/save", userData, { headers: headers });
   }
 
-  checkLogincredential(username: any) {
-    return this.http.get(this.myUrl + '/?email=' + username);
+  checkLogincredential(userData: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    let headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    headers.append("Content-Type", "application/json");
+
+    // return this.http.post<any>("http://localhost:8081/api/token", userData, { headers })
+    //   .toPromise()
+    //   .then(response => {
+    //     localStorage.setItem('token', response.token);
+    //     return response;
+    //   });
+    return this.http.post<any>("http://localhost:8080/blog/token", userData, { headers }).toPromise()
+      .then(response => {
+        localStorage.setItem('token', response.token);
+        return response;
+      })
   }
 
   getUserInfoById(id: any): Observable<any> {
-    return this.http.get(this.myUrl + '/?id=' + id);
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(`${this.myUrl + "/userbyid"}/${id}`, { headers: headers });
   }
 
   deleteUser(id: any) {
-    return this.http.delete(`${this.myUrl}/${id}`);
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.delete(`${this.myUrl + "/delete"}/${id}`, { headers: headers });
   }
   updateUser(userId: any, updateData: any) {
-    return this.http.put(`${this.myUrl}/${userId}`, updateData);
+    let username = 'admin';
+    let password = 'admin';
+
+    const header = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.put(`${this.myUrl + "/update"}/${userId}`, updateData, { headers: header });
   }
 
-  updateStatus(userid: any) {
-    return this.http.patch(`${this.myUrl}/${userid}`, {
-      isactive: true,
-    })
+  updateStatus(id: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(`${this.myUrl + "/status"}/${id}`, { headers: headers });
   }
 
   isLoginUser() {
-    if (sessionStorage.getItem('user') != null) {
+    if (localStorage.getItem('token') != null) {
       return true;
     }
     else {
@@ -64,9 +98,12 @@ export class LoginserviceServiceServer {
     }
   }
   isRoleAdmin() {
-    const sessionData = JSON.parse(sessionStorage.getItem('user') || '');
-    if (sessionData[0].role === 'admin') {
-
+    this.token = localStorage.getItem('token');
+    const decodedToken = this.jwtHelper.decodeToken(this.token);
+    this.username = decodedToken.sub;
+    this.role = decodedToken.role;
+    console.log(this.token);
+    if (this.role === 'admin') {
       return true;
     }
     else {

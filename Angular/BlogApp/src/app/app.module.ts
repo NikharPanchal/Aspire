@@ -51,6 +51,8 @@ import { LoginserviceServiceServer } from './user/service/authenticationService.
 import { UserDashboardModule } from './user-dashboard/user-dashboard.module';
 import { ContactModule } from './contact/contact.module';
 
+import { LoginRoutingModule } from './user/login/login-routing.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,11 +79,11 @@ import { ContactModule } from './contact/contact.module';
     MatFormFieldModule,
     MatInputModule, MatMenuModule,
     HomeRoutingModule,
-    LoginModule,
     AdminDashboardModule,
     AddUserModule,
     UserDashboardModule,
-    ContactModule
+    ContactModule, LoginModule,
+
   ],
   providers: [LoginserviceServiceServer],
   bootstrap: [AppComponent]

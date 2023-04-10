@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
-import { AdminDashboardComponent } from './admin-dashboard.component';
+import { AdminDashboardComponent, ChangeStatusDialog, DialogAnimationsExampleDialog } from './admin-dashboard.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -13,7 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    DialogAnimationsExampleDialog,
+    ChangeStatusDialog
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatTableModule,
     MatButtonModule,
-    MatDialogModule
+    MatDialogModule,
   ]
 })
 export class AdminDashboardModule {

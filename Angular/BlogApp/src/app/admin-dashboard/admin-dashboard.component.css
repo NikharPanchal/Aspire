@@ -5,3 +5,7 @@ table {
 .col-val {
     font-size: 12px;
 }
+
+.confirm-dialog-container {
+    padding: 20px;
+}

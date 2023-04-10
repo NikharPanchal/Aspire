@@ -8,11 +8,15 @@ import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatIcon, MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { JwtModule } from "@auth0/angular-jwt";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
-
+import { AdminDashboardModule } from 'src/app/admin-dashboard/admin-dashboard.module';
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 
 @NgModule({
   declarations: [
@@ -28,7 +32,12 @@ import { MatRippleModule } from '@angular/material/core';
     BrowserAnimationsModule,
     MatInputModule,
     MatRippleModule,
-    MatButtonModule
+    MatButtonModule, JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:4200"]
+      },
+    }),
   ]
 })
 export class LoginModule { }

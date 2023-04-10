@@ -19,34 +19,22 @@ export class AddUserComponent implements OnInit {
 
   submit() {
     this.subimitted = true;
-    if (this.subimitted) {
-      this.service.checkLogincredential(this.registerform.value.email).subscribe((data: any) => {
-        console.log(data);
-        if (data != '') {
-          this.emailmessage = "Email is already exists.."
-        }
-        else {
-          if (this.registerform.valid) {
-            console.log("form submittted");
-            this.service.registerUser(this.registerform.value).subscribe(data => {
-              console.log(this.registerform.value);
 
-              this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+    if (this.registerform.valid) {
+      console.log("form submittted");
+      this.service.registerUser(this.registerform.value).subscribe(data => {
+        console.log(this.registerform.value);
 
-              this.userArr.push(this.registerform.value);
-              console.log(this.userArr);
+        this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
 
-
-              localStorage.setItem('userData', JSON.stringify(this.userArr));
-              console.log('registration sucess');
-              this.showMsg = true;
-            });
-          }
-          else {
-            //this.message = "invalid information";
-          }
-        }
-      })
+        this.userArr.push(this.registerform.value);
+        console.log(this.userArr);
+        console.log('registration sucess');
+        this.showMsg = true;
+      });
+    }
+    else {
+      //this.message = "invalid information";
     }
   }
   hide = true;
@@ -54,7 +42,7 @@ export class AddUserComponent implements OnInit {
 
   loadform() {
     this.registerform = this.formbuilder.group({
-      //id: this.formbuilder.control(['', Validators.compose([Validators.required, Validators.minLength(5)])]),
+      id: new FormControl(''),
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],

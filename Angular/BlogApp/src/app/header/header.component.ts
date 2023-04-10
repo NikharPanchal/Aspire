@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-header',
@@ -12,14 +13,16 @@ export class HeaderComponent implements OnInit {
   dashboard = '';
   userdashboard = '';
   sessionData: any;
+  role: any;
+  token: any;
 
-  constructor() {
+  constructor(private jwtHelper: JwtHelperService) {
     this.isLogin();
-   }
+  }
 
   isLogin() {
     this.ngOnInit();
-    if (sessionStorage.getItem('user') != null) {
+    if (localStorage.getItem('token') != null) {
       return true;
     } else {
       return false;
@@ -27,14 +30,18 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('user') != null) {
-      this.sessionData = JSON.parse(sessionStorage.getItem('user') || '');
 
-      this.username = `Welcome ,${this.sessionData[0].fname} `
-      if (this.sessionData[0].role == 'admin') {
+    if (localStorage.getItem('token') != null) {
+      this.token = localStorage.getItem('token');
+
+      const decodedToken = this.jwtHelper.decodeToken(this.token);
+      this.username = decodedToken.sub;
+      this.role = decodedToken.role;
+      this.username = `Welcome ,${this.username} `
+      if (this.role == 'admin') {
         this.dashboard = 'User Data';
       }
-      if (this.sessionData[0].role == 'user') {
+      if (this.role == 'user') {
         this.userdashboard = 'My Blog';
       }
     } else {
@@ -43,10 +50,9 @@ export class HeaderComponent implements OnInit {
       this.userdashboard = '';
     }
   }
-
   logout() {
     this.ngOnInit();
-    sessionStorage.clear();
+    localStorage.clear();
   }
 
 }

@@ -23,11 +23,11 @@ export class LoginserviceService {
   }
 
   getalluserdata() {
-    let username = 'admin';
-    let password = 'admin';
+    // let username = 'admin';
+    // let password = 'admin';
 
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.get("http://localhost:8080/blog/hasuser", { headers: headers })
+    // const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(this.myUrl + '/?role=user')
   }
 
   registerUser(userData: any): Observable<any> {
