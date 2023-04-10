@@ -13,7 +13,7 @@ export class LoginserviceServiceServer {
   role: any;
 
   constructor(private http: HttpClient,
-    private route: Router, private jwtHelper: JwtHelperService) {
+    private route: Router, private jwtService:JwtHelperService) {
 
   }
   myUrl = "http://localhost:8080/blog";
@@ -99,7 +99,7 @@ export class LoginserviceServiceServer {
   }
   isRoleAdmin() {
     this.token = localStorage.getItem('token');
-    const decodedToken = this.jwtHelper.decodeToken(this.token);
+    const decodedToken = this.jwtService.decodeToken(this.token);
     this.username = decodedToken.sub;
     this.role = decodedToken.role;
     console.log(this.token);

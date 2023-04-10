@@ -25,10 +25,10 @@ export class AddUserComponent implements OnInit {
       this.service.registerUser(this.registerform.value).subscribe(data => {
         console.log(this.registerform.value);
 
-        this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+        // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
 
-        this.userArr.push(this.registerform.value);
-        console.log(this.userArr);
+        // this.userArr.push(this.registerform.value);
+        // console.log(this.userArr);
         console.log('registration sucess');
         this.showMsg = true;
       });
