@@ -9,10 +9,10 @@ import { LoginserviceServiceServer } from '../user/service/authenticationService
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-  showMsg: boolean = false;
+  status: boolean = false;
   userInfo: any;
   subimitted: boolean = false;
-
+  showMsg = '';
   emailmessage = "";
   private userArr: any = [];
   constructor(private formbuilder: FormBuilder, private service: LoginserviceServiceServer, private route: ActivatedRoute) { }
@@ -22,16 +22,39 @@ export class AddUserComponent implements OnInit {
 
     if (this.registerform.valid) {
       console.log("form submittted");
-      this.service.registerUser(this.registerform.value).subscribe(data => {
-        console.log(this.registerform.value);
 
-        // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+      this.service.checkEmailAddressExist(this.registerform.value).subscribe((data) => {
+        console.log(data);
+        if (data == false) {
+          this.service.registerUser(this.registerform.value).subscribe(data => {
+            console.log(this.registerform.value);
 
-        // this.userArr.push(this.registerform.value);
-        // console.log(this.userArr);
-        console.log('registration sucess');
-        this.showMsg = true;
-      });
+            // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+            // this.userArr.push(this.registerform.value);
+            // console.log(this.userArr);
+            console.log('registration sucess');
+            this.showMsg = "Registration Success";
+            this.status = true;
+          });
+        }
+        else {
+          this.showMsg = "Email is already taken";
+          this.status = false;
+        }
+      })
+
+
+      // this.service.registerUser(this.registerform.value).subscribe(data => {
+      //   console.log(this.registerform.value);
+
+      //   // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+      //   // this.userArr.push(this.registerform.value);
+      //   // console.log(this.userArr);
+      //   console.log('registration sucess');
+      //   this.showMsg = true;
+      // });
     }
     else {
       //this.message = "invalid information";
@@ -45,8 +68,8 @@ export class AddUserComponent implements OnInit {
       id: new FormControl(''),
       fname: ['', Validators.required],
       lname: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),],
+      password: ['', Validators.required],
       role: this.formbuilder.control('user'),
       isactive: this.formbuilder.control(false)
     })

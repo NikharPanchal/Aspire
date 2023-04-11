@@ -13,7 +13,7 @@ export class LoginserviceServiceServer {
   role: any;
 
   constructor(private http: HttpClient,
-    private route: Router, private jwtService:JwtHelperService) {
+    private route: Router, private jwtService: JwtHelperService) {
 
   }
   myUrl = "http://localhost:8080/blog";
@@ -28,6 +28,14 @@ export class LoginserviceServiceServer {
 
   getalluserdata() {
     return this.http.get(this.myUrl + '/?role=user')
+  }
+
+  checkEmailAddressExist(email: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.post("http://localhost:8080/blog/checkEmail", email, { headers: headers });
   }
 
   registerUser(userData: any): Observable<any> {
@@ -87,6 +95,14 @@ export class LoginserviceServiceServer {
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
     return this.http.get(`${this.myUrl + "/status"}/${id}`, { headers: headers });
+  }
+
+  IsActive(email: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.post("http://localhost:8080/blog/isactive", email, { headers: headers });
   }
 
   isLoginUser() {

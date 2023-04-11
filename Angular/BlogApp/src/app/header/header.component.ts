@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   username = '';
   dashboard = '';
   userdashboard = '';
+  BlogList = '';
   sessionData: any;
   role: any;
   token: any;
@@ -40,6 +41,7 @@ export class HeaderComponent implements OnInit {
       this.username = `Welcome ,${this.username} `
       if (this.role == 'admin') {
         this.dashboard = 'User Data';
+        this.BlogList = "Blog List";
       }
       if (this.role == 'user') {
         this.userdashboard = 'My Blog';
@@ -48,11 +50,12 @@ export class HeaderComponent implements OnInit {
       this.username = '';
       this.dashboard = '';
       this.userdashboard = '';
+      this.BlogList = '';
     }
   }
   logout() {
-    this.ngOnInit();
     localStorage.clear();
+    this.ngOnInit();
   }
 
 }

@@ -54,15 +54,6 @@ export class AdminDashboardComponent implements OnInit {
       }
     })
   }
-  // deleteUser(id: any): void {
-  //   console.log(id);
-  //   this.deleteId = id;
-  //   this.service.deleteUser(id).subscribe((data) => {
-  //     this.ngOnInit();
-  //   });
-
-  // }
-
   opendialog(id: any): void {
     this.dialog.open(DialogAnimationsExampleDialog, {
       width: '350px',

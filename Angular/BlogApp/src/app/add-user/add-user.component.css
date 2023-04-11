@@ -9,3 +9,9 @@ mat-card {
 mat-form-field {
     width: -webkit-fill-available;
 }
+
+.email-error {
+    color: red;
+    margin-right: 400px;
+    margin-top: 10px;
+}

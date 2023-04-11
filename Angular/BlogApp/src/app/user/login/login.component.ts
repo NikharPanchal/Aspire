@@ -70,29 +70,60 @@ export class LoginComponent implements OnInit {
     //   this.message = 'invalid username and password..';
     //   this.status = false;
     // }
-    this.loginservice.checkLogincredential(this.loginform.value).then((data: any) => {
+
+    this.loginservice.IsActive(this.loginform.value).subscribe((data) => {
       console.log(data);
-      this.message = "success";
+      if (data == true) {
+        this.loginservice.checkLogincredential(this.loginform.value).then((data: any) => {
+          console.log(data);
+          this.message = "success";
+          this.token = localStorage.getItem('token');
+          const decodedToken = this.jwtHelper.decodeToken(this.token);
+          this.username = decodedToken.sub;
+          this.role = decodedToken.role;
+          if (this.role == 'admin') {
+            this.router.navigate(['admin-dashboard']);
+          }
+          if (this.role == 'user') {
+            this.router.navigate(['user-dashboard']);
+          }
 
+          this.status = true;
 
-      this.token = localStorage.getItem('token');
-      const decodedToken = this.jwtHelper.decodeToken(this.token);
-      this.username = decodedToken.sub;
-      this.role = decodedToken.role;
-      if (this.role == 'admin') {
-        this.router.navigate(['admin-dashboard']);
+        }, (err: any) => {
+          console.warn('invalid credential');
+          this.message = 'invalid username and password..';
+          this.status = false;
+        });
       }
-      if (this.role == 'user') {
-        this.router.navigate(['user-dashboard']);
+      else {
+        this.message = 'Access Denied';
+        this.status = false;
       }
+    })
 
-      this.status = true;
+    // this.loginservice.checkLogincredential(this.loginform.value).then((data: any) => {
+    //   console.log(data);
+    //   this.message = "success";
+    //   this.token = localStorage.getItem('token');
+    //   const decodedToken = this.jwtHelper.decodeToken(this.token);
+    //   this.username = decodedToken.sub;
+    //   this.role = decodedToken.role;
+    //   if (this.role == 'admin') {
+    //     this.router.navigate(['admin-dashboard']);
+    //   }
+    //   if (this.role == 'user') {
+    //     this.router.navigate(['user-dashboard']);
+    //   }
 
-    }, (err: any) => {
-      console.warn('invalid credential');
-      this.message = 'invalid username and password..';
-      this.status = false;
-    });
+    //   this.status = true;
+
+    // }, (err: any) => {
+    //   console.warn('invalid credential');
+    //   this.message = 'invalid username and password..';
+    //   this.status = false;
+    // });
+
   }
 
   ngOnInit(): void {

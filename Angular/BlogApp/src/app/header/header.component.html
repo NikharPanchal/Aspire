@@ -10,14 +10,14 @@
             <a mat-button routerLink="/about"> About Us </a>
             <a mat-button routerLink="/contact"> Contacts </a>
             <a mat-button routerLink="/admin-dashboard" *ngIf="dashboard!=''"> {{dashboard}} </a>
+            <a mat-button routerLink="/blog-list" *ngIf="BlogList!=''"> {{BlogList}} </a>
             <a mat-button routerLink="/user-dashboard" *ngIf="userdashboard!=''"> {{userdashboard}} </a>
 
-            <a  mat-raised-button routerLink="login" *ngIf="!isLogin()"> Login</a>
-            
-            <a  mat-raised-button routerLink="login" *ngIf="isLogin()"
-            (click)="logout()">
-            Logout</a>
-           
+            <a mat-raised-button routerLink="login" *ngIf="!isLogin()"> Login</a>
+
+            <a mat-raised-button routerLink="login" *ngIf="isLogin()" (click)="logout()">
+                Logout</a>
+
         </div>
         <span class="spacer"></span>
         <span class="welcome-msg" *ngIf="username!=''">{{username}}</span>
@@ -26,20 +26,18 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav>
         <mat-nav-list>
-            <a mat-list-item routerLink="/home"> Home </a>
-            <a mat-list-item> About Us </a>
-            <a mat-list-item> Contacts </a>
-            <a mat-list-item routerLink="data-table"> Datatable </a>
-            <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+            <a mat-list-item routerLink="/home" (click)="sidenav.toggle()"> Home </a>
+            <a mat-list-item (click)="sidenav.toggle()"> About Us </a>
+            <a mat-list-item (click)="sidenav.toggle()" routerLink="/contact"> Contacts </a>
+            <a mat-list-item routerLink="data-table" (click)="sidenav.toggle()"> Datatable </a>
+            <a mat-list-item (click)="sidenav.toggle()">Close</a>
             <!-- <a mat-list-item routerLink="/login" *ngIf="!isLogin"> Login </a>
 
             <a mat-list-item (click)="logout()" *ngIf="isLogin"> Logout </a> -->
-            <a  mat-list-item routerLink="login"><button class="btn btn-primary" *ngIf="!isLogin()"><i
-                class="fa fa-sign-in" aria-hidden="true"></i> Login</button></a>
-            
-            <a  mat-list-item routerLink="login"><button class="btn btn-primary" *ngIf="isLogin()"
-            (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i>
-            Logout</button></a>
+            <a mat-list-item color="primary" routerLink="login" (click)="sidenav.toggle()" *ngIf="!isLogin()"> Login</a>
+
+            <a mat-list-item routerLink="login" *ngIf="isLogin()" (click)="sidenav.toggle()" (click)="logout()">
+                Logout</a>
 
         </mat-nav-list>
     </mat-sidenav>
