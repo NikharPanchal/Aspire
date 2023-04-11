@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-card-content>
+        <div class="row" *ngIf="showMsg!='' && status==true && blogForm.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{showMsg}}</strong>
+                </p>
+            </div>
+        </div>
+        <div class="row" *ngIf="showMsg!='' && status==false && blogForm.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-warning">
+                    <strong>{{showMsg}}</strong>
+                </p>
+            </div>
+        </div>
+        <form class="example-form" [formGroup]="blogForm" (ngSubmit)="submit()">
+            <div class="title">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Blog Title</mat-label>
+                    <input class="input" formControlName="title" name="title" matInput maxlength="25">
+                    <mat-error *ngIf="blogForm.controls.title.errors">Blog Title Required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Textarea</mat-label>
+                <textarea matInput formControlName="description" required></textarea>
+                <mat-error *ngIf="blogForm.controls.description.errors">Blog Description Required</mat-error>
+            </mat-form-field>
+
+
+            <div class="email">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input class="input" formControlName="email" name="lname" matInput maxlength="25">
+                    <mat-error *ngIf="blogForm.controls.email.errors">Email invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <button mat-flat-button color="primary">Save Blog</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BlogListRoutingModule } from './blog-list-routing.module';
-import { BlogListComponent } from './blog-list.component';
+import { BlogListComponent, DeleteDialogExample } from './blog-list.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -13,7 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    BlogListComponent
+    BlogListComponent,
+    DeleteDialogExample
   ],
   imports: [
     CommonModule,

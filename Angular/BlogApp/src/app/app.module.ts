@@ -53,6 +53,8 @@ import { ContactModule } from './contact/contact.module';
 
 import { LoginRoutingModule } from './user/login/login-routing.module';
 import { BlogListRoutingModule } from './blog-list/blog-list-routing.module';
+import { BlogListModule } from './blog-list/blog-list.module';
+import { AddBlogModule } from './add-blog/add-blog.module';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { BlogListRoutingModule } from './blog-list/blog-list-routing.module';
     AddUserModule,
     UserDashboardModule,
     ContactModule, LoginModule,
-    BlogListRoutingModule
+    BlogListModule,
+    AddBlogModule
 
   ],
   providers: [LoginserviceServiceServer],

@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   dashboard = '';
   userdashboard = '';
   BlogList = '';
+  addBlog='';
   sessionData: any;
   role: any;
   token: any;
@@ -45,12 +46,15 @@ export class HeaderComponent implements OnInit {
       }
       if (this.role == 'user') {
         this.userdashboard = 'My Blog';
+        this.addBlog="Add Blog";
       }
     } else {
       this.username = '';
       this.dashboard = '';
       this.userdashboard = '';
       this.BlogList = '';
+      this.addBlog='';
+      
     }
   }
   logout() {

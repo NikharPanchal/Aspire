@@ -11,6 +11,7 @@
             <a mat-button routerLink="/contact"> Contacts </a>
             <a mat-button routerLink="/admin-dashboard" *ngIf="dashboard!=''"> {{dashboard}} </a>
             <a mat-button routerLink="/blog-list" *ngIf="BlogList!=''"> {{BlogList}} </a>
+            <a mat-button routerLink="/add-blog" *ngIf="addBlog!=''"> {{addBlog}} </a>
             <a mat-button routerLink="/user-dashboard" *ngIf="userdashboard!=''"> {{userdashboard}} </a>
 
             <a mat-raised-button routerLink="login" *ngIf="!isLogin()"> Login</a>

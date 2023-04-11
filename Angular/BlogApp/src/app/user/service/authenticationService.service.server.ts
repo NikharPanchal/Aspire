@@ -18,6 +18,8 @@ export class LoginserviceServiceServer {
   }
   myUrl = "http://localhost:8080/blog";
 
+  blogUrl="http://localhost:8080/blogs";
+
   getAllData() {
     let username = 'admin';
     let password = 'admin';
@@ -125,5 +127,29 @@ export class LoginserviceServiceServer {
     else {
       return false;
     }
+  }
+
+  getAllBlogs(){
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(`${this.blogUrl + "/getAllBlog"}`, { headers: headers });
+  }
+
+  deleteBlog(blogId:any){
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.delete(`${this.blogUrl + "/deleteBlog"}/${blogId}`, { headers: headers });
+  }
+
+  getBlogbyUserName(email:any){
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(`${this.blogUrl + "/getBlogById"}/${email}`, { headers: headers });
   }
 }
