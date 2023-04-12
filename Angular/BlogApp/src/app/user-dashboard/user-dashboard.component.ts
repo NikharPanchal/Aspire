@@ -9,12 +9,13 @@ import { LoginserviceServiceServer } from '../user/service/authenticationService
   styleUrls: ['./user-dashboard.component.css']
 })
 export class UserDashboardComponent implements OnInit {
-  username='';
-  token:any;
-  role='';
-  dashboard='';
-  constructor(private jwtHelper:JwtHelperService,
-    private service:LoginserviceServiceServer) { }
+  username = '';
+  token: any;
+  role = '';
+  dashboard = '';
+  blog: any;
+  constructor(private jwtHelper: JwtHelperService,
+    private service: LoginserviceServiceServer) { }
   ngOnInit(): void {
     if (localStorage.getItem('token') != null) {
       this.token = localStorage.getItem('token');
@@ -24,10 +25,11 @@ export class UserDashboardComponent implements OnInit {
       this.role = decodedToken.role;
       console.log(this.username);
 
-      this.service.getBlogbyUserName(this.username).subscribe((data)=>{
+      this.service.getBlogbyUserName(this.username).subscribe((data) => {
         console.log(data);
+        this.blog = data;
       })
-      
+
       // if (this.role == 'admin') {
       //   this.dashboard = 'User Data';
       //   this.BlogList = "Blog List";

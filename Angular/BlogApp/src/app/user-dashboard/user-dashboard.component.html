@@ -1,17 +1,16 @@
 <div class="container-fluid">
     <div class="row pt-3">
-        <div class="col-sm-4 col-md-4 pb-2">
+        <div class="col-sm-4 col-md-4 pb-2" *ngFor="let blog of blog">
             <div class="card">
                 <img class="card-img-top" src="../../assets/img/image1.png" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">Angular v15 is now available!</h5>
-                    <p class="card-text">Over the past year we removed Angular's legacy compiler and rendering pipeline
-                        which enabled the development of a series of developer…</p>
+                    <h5 class="card-title">{{blog.blogTitle}}</h5>
+                    <p class="card-text">{{blog.blogDescription}}</p>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-4 col-md-4 pb-2">
+        <!-- <div class="col-sm-4 col-md-4 pb-2">
             <div class="card">
                 <img class="card-img-top" src="../../assets/img/image2.jpg" alt="Card image cap">
                 <div class="card-body">
@@ -32,10 +31,10 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-sm-4 col-md-4 pb-2">
             <div class="card">
                 <img class="card-img-top" src="../../assets/img/image4.png" alt="Card image cap">
@@ -48,5 +47,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>

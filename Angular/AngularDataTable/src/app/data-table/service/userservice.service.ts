@@ -57,7 +57,9 @@ export class UserserviceService {
 
   saveFile(file: File) {
     let formData = new FormData();
-    formData.append('img', file);
+    formData.append("file", file);
+    console.log(formData);
+
     return this.http.post("http://localhost:8081/api/savefile", formData);
   }
 }

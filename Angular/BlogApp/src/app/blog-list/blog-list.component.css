@@ -1,6 +1,20 @@
 table {
     width: 100%;
 }
+
 .col-val {
     font-size: 12px;
+    padding: 2px;
+}
+
+mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+    max-height: 600px;
+    padding: 30px;
+}
+
+mat-form-field {
+    width: -webkit-fill-available;
 }

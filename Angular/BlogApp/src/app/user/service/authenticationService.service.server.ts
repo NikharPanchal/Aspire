@@ -18,7 +18,7 @@ export class LoginserviceServiceServer {
   }
   myUrl = "http://localhost:8080/blog";
 
-  blogUrl="http://localhost:8080/blogs";
+  blogUrl = "http://localhost:8080/blogs";
 
   getAllData() {
     let username = 'admin';
@@ -129,7 +129,7 @@ export class LoginserviceServiceServer {
     }
   }
 
-  getAllBlogs(){
+  getAllBlogs() {
     let username = 'admin';
     let password = 'admin';
 
@@ -137,7 +137,7 @@ export class LoginserviceServiceServer {
     return this.http.get(`${this.blogUrl + "/getAllBlog"}`, { headers: headers });
   }
 
-  deleteBlog(blogId:any){
+  deleteBlog(blogId: any) {
     let username = 'admin';
     let password = 'admin';
 
@@ -145,11 +145,35 @@ export class LoginserviceServiceServer {
     return this.http.delete(`${this.blogUrl + "/deleteBlog"}/${blogId}`, { headers: headers });
   }
 
-  getBlogbyUserName(email:any){
+  getBlogbyUserName(email: any) {
     let username = 'admin';
     let password = 'admin';
 
     const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
     return this.http.get(`${this.blogUrl + "/getBlogById"}/${email}`, { headers: headers });
+  }
+
+  saveUserBlog(blogData: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.post("http://localhost:8080/blogs/saveBlog", blogData, { headers: headers });
+  }
+
+  getBlogbyBlogId(blogId: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.get(`${this.blogUrl + "/findBlogById"}/${blogId}`, { headers: headers });
+  }
+
+  updateUserBlogData(blogId: any, updateData: any) {
+    let username = 'admin';
+    let password = 'admin';
+
+    const header = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    return this.http.put(`${this.blogUrl + "/updateBlog"}/${blogId}`, updateData, { headers: header });
   }
 }

@@ -1,0 +1,40 @@
+<h1 class="text-center">Update Blog</h1>
+<form class="example-form" [formGroup]="editBlog" (ngSubmit)="update()">
+    <mat-dialog-content class="mat-typography">
+
+        <input formControlName="blogId" hidden name="blogId">
+        <div class="title">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Blog Title</mat-label>
+                <input class="input" formControlName="blogTitle" name="title" required matInput>
+                <mat-error *ngIf="editBlog.controls.blogTitle.errors">Blog Title Required</mat-error>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput rows="5" formControlName="blogDescription" required></textarea>
+            <mat-error *ngIf="editBlog.controls.blogDescription.errors">Blog Description Required</mat-error>
+        </mat-form-field>
+
+
+        <div class="email">
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Email Address</mat-label>
+                <input class="input" readonly formControlName="email" name="email" matInput>
+                <mat-error *ngIf="editBlog.controls.email.errors">Email invalid</mat-error>
+            </mat-form-field>
+        </div>
+
+
+        <!-- <div>
+            <button mat-flat-button color="primary">Save Blog</button>
+        </div> -->
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-flat-button color="primary">Save Blog</button>
+        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="editConfirm()">Install</button> -->
+    </mat-dialog-actions>
+</form>

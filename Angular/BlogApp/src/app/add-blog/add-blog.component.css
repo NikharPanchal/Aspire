@@ -9,3 +9,7 @@ mat-card {
 mat-form-field {
     width: -webkit-fill-available;
 }
+
+.col-val {
+    font-size: 12px;
+}
