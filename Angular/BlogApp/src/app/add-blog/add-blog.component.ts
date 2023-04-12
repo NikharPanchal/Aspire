@@ -1,6 +1,6 @@
 import { HttpHeaderResponse } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -17,7 +17,7 @@ export class AddBlogComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-
+  
   status: any;
   showMsg: any;
   blogForm!: FormGroup;
@@ -26,6 +26,7 @@ export class AddBlogComponent implements OnInit {
   username: any;
   emaildef: any;
   dataSource = new MatTableDataSource();
+  inputControl = new FormControl('');
   displayedColumns: string[] = ['blogId', 'blogTitle', 'blogDescription', 'email', 'edit', 'delete'];
   user: any;
   constructor(private formbuilder: FormBuilder,
@@ -54,10 +55,10 @@ export class AddBlogComponent implements OnInit {
     );
 
     this.blogForm = this.formbuilder.group({
-      blogId: [''],
-      blogTitle: ['', [Validators.required, Validators.maxLength(40)]],
-      blogDescription: ['', Validators.required],
-      email: [this.username, Validators.required]
+      blogId: new FormControl(''),
+      blogTitle: new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      blogDescription: new FormControl('', Validators.required),
+      email: new FormControl( this.username, Validators.required)
     })
   }
   opendeletedialog(id: any) {
@@ -72,6 +73,12 @@ export class AddBlogComponent implements OnInit {
       }
     })
   }
+
+resetField(){
+  this.blogForm.get("blogTitle")?.setValue('');
+  this.blogForm.get("blogDescription")?.setValue('');
+}  
+
   submit() {
     if (this.blogForm.valid) {
       console.log(this.blogForm.value);

@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "@auth0/angular-jwt": "^5.1.2",
+    "auth-jwt": "^1.0.6",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
     "rxjs": "~6.6.0",
