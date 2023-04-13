@@ -2,7 +2,8 @@
     <div class="row pt-3">
         <div class="col-sm-4 col-md-4 pb-2" *ngFor="let blog of blog">
             <div class="card">
-                <img class="card-img-top" src="../../assets/img/image1.png" alt="Card image cap">
+
+                <img src="{{'data:image/jpeg;base64,' + blog.imageByte}}">
                 <div class="card-body">
                     <h5 class="card-title">{{blog.blogTitle}}</h5>
                     <p class="card-text">{{blog.blogDescription}}</p>

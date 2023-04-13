@@ -31,7 +31,8 @@
                 <textarea matInput formControlName="blogDescription" required></textarea>
                 <mat-error *ngIf="blogForm.controls.blogDescription.errors">Blog Description Required</mat-error>
             </mat-form-field>
-
+            <input type="file" name="file" (change)="onSelectFile($event)" class="input">
+            <mat-error *ngIf="blogForm.invalid">Please select an image file.</mat-error>
 
             <div class="email">
                 <mat-form-field class="full-width" appearance="outline">
@@ -74,9 +75,20 @@
 
                     <ng-container matColumnDef="blogDescription">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                        <td class="col-val" mat-cell *matCellDef="let element">{{element.blogDescription}}
-                            <!-- <button mat-raised-button color="basic" matTooltip=" {{element.blogDescription}}"
-                            matTooltipClass="multiline-tooltip">Hover Me! </button> -->
+                        <!-- <td class="col-val" mat-cell *matCellDef="let element">{{element.blogDescription}} -->
+                        <td class="col-val" mat-cell *matCellDef="let element">
+                            <button mat-raised-button color="basic" matTooltip=" {{element.blogDescription}}"
+                                matTooltipClass="multiline-tooltip">Hover Me! </button>
+                        </td>
+                    </ng-container>
+
+
+                    <ng-container matColumnDef="image">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                        <td class="col-val" mat-cell *matCellDef="let element">
+                            <!-- <img [src]="displayImage(element.imageByte)"> -->
+                            <!-- <img ng-src="data:image/jpeg;base64," {{element.imageByte}}> -->
+                            <img height="50" width="50" src="{{'data:image/jpeg;base64,' + element.imageByte}}">
                         </td>
                     </ng-container>
 

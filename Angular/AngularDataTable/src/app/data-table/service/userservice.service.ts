@@ -55,11 +55,8 @@ export class UserserviceService {
       });
   }
 
-  saveFile(file: any) {
-    const formData = new FormData();
-    formData.append("file", file);
-    console.log(formData);
+  saveFile(FormData: FormData): Observable<any> {
 
-    return this.http.post("http://localhost:8081/api/savefile", formData,{ observe: 'response' });
+    return this.http.post("http://localhost:8081/api/savefile", FormData);
   }
 }

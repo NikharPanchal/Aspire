@@ -11,7 +11,7 @@
                     <mat-error *ngIf="imageform.invalid">Please select an image file.</mat-error>
                 </mat-form-field> -->
 
-                <input type="file" name="file" formControlName="image" class="input">
+                <input type="file" name="file" (change)="onSelectFile($event)" formControlName="image" class="input">
                 <mat-error *ngIf="imageform.invalid">Please select an image file.</mat-error>
 
             </div>

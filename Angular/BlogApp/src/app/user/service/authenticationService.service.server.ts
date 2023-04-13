@@ -61,7 +61,7 @@ export class LoginserviceServiceServer {
     //     localStorage.setItem('token', response.token);
     //     return response;
     //   });
-    return this.http.post<any>("http://localhost:8080/blog/token", userData, { headers }).toPromise()
+    return this.http.post<any>(`${this.myUrl + "/token"}`, userData, { headers }).toPromise()
       .then(response => {
         localStorage.setItem('token', response.token);
         return response;
@@ -153,7 +153,7 @@ export class LoginserviceServiceServer {
     return this.http.get(`${this.blogUrl + "/getBlogById"}/${email}`, { headers: headers });
   }
 
-  saveUserBlog(blogData: any) {
+  saveUserBlog(blogData: FormData) {
     let username = 'admin';
     let password = 'admin';
 

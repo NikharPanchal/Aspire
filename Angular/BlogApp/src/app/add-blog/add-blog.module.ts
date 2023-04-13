@@ -13,6 +13,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { matDialogAnimations } from '@angular/material/dialog';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { matDialogAnimations } from '@angular/material/dialog';
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
+    MatTooltipModule
   ]
 })
 export class AddBlogModule { }

@@ -1,5 +1,5 @@
 import { HttpHeaderResponse } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -15,10 +15,12 @@ import { LoginserviceServiceServer } from '../user/service/authenticationService
 })
 export class AddBlogComponent implements OnInit {
 
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  
+
   status: any;
+  userFile: any = File;
   showMsg: any;
   blogForm!: FormGroup;
   subimitted: boolean = false;
@@ -27,11 +29,14 @@ export class AddBlogComponent implements OnInit {
   emaildef: any;
   dataSource = new MatTableDataSource();
   inputControl = new FormControl('');
-  displayedColumns: string[] = ['blogId', 'blogTitle', 'blogDescription', 'email', 'edit', 'delete'];
+  displayedColumns: string[] = ['blogId', 'blogTitle', 'blogDescription', 'image', 'email', 'edit', 'delete'];
   user: any;
+  imageData: any;
+
   constructor(private formbuilder: FormBuilder,
     private jwtHelper: JwtHelperService,
     private service: LoginserviceServiceServer, public dialog: MatDialog) { }
+
 
   ngOnInit(): void {
     if (localStorage.getItem('token') != null) {
@@ -56,11 +61,18 @@ export class AddBlogComponent implements OnInit {
 
     this.blogForm = this.formbuilder.group({
       blogId: new FormControl(''),
-      blogTitle: new FormControl('',[Validators.required,Validators.maxLength(30)]),
+      blogTitle: new FormControl('', [Validators.required, Validators.maxLength(30)]),
       blogDescription: new FormControl('', Validators.required),
-      email: new FormControl( this.username, Validators.required)
+      email: new FormControl(this.username, Validators.required)
     })
   }
+
+  displayImage(imageData: any): any {
+    this.imageData = 'data:image/jpeg;base64,' + btoa(String.fromCharCode.apply(null, imageData));
+    return imageData;
+  }
+
+
   opendeletedialog(id: any) {
 
     this.dialog.open(DeleteDialogExample, {
@@ -73,17 +85,25 @@ export class AddBlogComponent implements OnInit {
       }
     })
   }
-
-resetField(){
-  this.blogForm.get("blogTitle")?.setValue('');
-  this.blogForm.get("blogDescription")?.setValue('');
-}  
+  onSelectFile(event: any) {
+    const file = event.target.files[0];
+    console.log(file);
+    this.userFile = file;
+  }
+  resetField() {
+    this.blogForm.get("blogTitle")?.setValue('');
+    this.blogForm.get("blogDescription")?.setValue('');
+  }
 
   submit() {
     if (this.blogForm.valid) {
+      const formData = new FormData();
+
+      formData.append('file', this.userFile);
+      formData.append('blog', JSON.stringify(this.blogForm.value));
       console.log(this.blogForm.value);
 
-      this.service.saveUserBlog(this.blogForm.value).subscribe((data) => {
+      this.service.saveUserBlog(formData).subscribe((data) => {
         console.log(data);
         if (data != null) {
           this.showMsg = "Insert success";
