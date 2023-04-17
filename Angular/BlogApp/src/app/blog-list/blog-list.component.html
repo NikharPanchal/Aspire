@@ -25,6 +25,14 @@
                             matTooltipClass="multiline-tooltip">Hover Me! </button> -->
                         </td>
                     </ng-container>
+                    <ng-container matColumnDef="image">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+                        <td class="col-val" mat-cell *matCellDef="let element">
+                            <!-- <img [src]="displayImage(element.imageByte)"> -->
+                            <!-- <img ng-src="data:image/jpeg;base64," {{element.imageByte}}> -->
+                            <img height="50" width="50" src="{{'data:image/jpeg;base64,' + element.imageByte}}">
+                        </td>
+                    </ng-container>
 
 
                     <ng-container matColumnDef="email">

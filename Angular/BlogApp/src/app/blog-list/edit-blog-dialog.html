@@ -1,3 +1,10 @@
+<div class="row" *ngIf="showMsg!='' && status==false && editBlog.valid">
+    <div class="col-xs-12">
+        <p class="alert alert-danger">
+            <strong>{{showMsg}}</strong>
+        </p>
+    </div>
+</div>
 <h1 class="text-center">Update Blog</h1>
 <form class="example-form" [formGroup]="editBlog" (ngSubmit)="update()">
     <mat-dialog-content class="mat-typography">
@@ -17,6 +24,9 @@
             <mat-error *ngIf="editBlog.controls.blogDescription.errors">Blog Description Required</mat-error>
         </mat-form-field>
 
+        <input type="file" name="file" (change)="onSelectFile($event)" class="input">
+
+        <img height="100" width="100" [src]="imagePath">
 
         <div class="email">
             <mat-form-field class="full-width" appearance="outline">
@@ -25,7 +35,6 @@
                 <mat-error *ngIf="editBlog.controls.email.errors">Email invalid</mat-error>
             </mat-form-field>
         </div>
-
 
         <!-- <div>
             <button mat-flat-button color="primary">Save Blog</button>

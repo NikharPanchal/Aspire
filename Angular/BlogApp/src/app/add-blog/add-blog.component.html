@@ -9,7 +9,7 @@
         </div>
         <div class="row" *ngIf="showMsg!='' && status==false && blogForm.valid">
             <div class="col-xs-12">
-                <p class="alert alert-warning">
+                <p class="alert alert-danger">
                     <strong>{{showMsg}}</strong>
                 </p>
             </div>
@@ -31,8 +31,8 @@
                 <textarea matInput formControlName="blogDescription" required></textarea>
                 <mat-error *ngIf="blogForm.controls.blogDescription.errors">Blog Description Required</mat-error>
             </mat-form-field>
-            <input type="file" name="file" (change)="onSelectFile($event)" class="input">
-            <mat-error *ngIf="blogForm.invalid">Please select an image file.</mat-error>
+            <input type="file" name="file" formControlName="image" (change)="onSelectFile($event)" class="input">
+            <!-- <mat-error *ngIf="blogForm.invalid">Please select an image file.</mat-error> -->
 
             <div class="email">
                 <mat-form-field class="full-width" appearance="outline">

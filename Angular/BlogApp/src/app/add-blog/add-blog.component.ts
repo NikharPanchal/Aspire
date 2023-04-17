@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LoginserviceServiceServer } from '../user/service/authenticationService.service.server';
 
@@ -35,7 +36,7 @@ export class AddBlogComponent implements OnInit {
 
   constructor(private formbuilder: FormBuilder,
     private jwtHelper: JwtHelperService,
-    private service: LoginserviceServiceServer, public dialog: MatDialog) { }
+    private service: LoginserviceServiceServer, public dialog: MatDialog, private router: Router) { }
 
 
   ngOnInit(): void {
@@ -61,7 +62,7 @@ export class AddBlogComponent implements OnInit {
 
     this.blogForm = this.formbuilder.group({
       blogId: new FormControl(''),
-      blogTitle: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      blogTitle: new FormControl('', [Validators.required, Validators.maxLength(100)]),
       blogDescription: new FormControl('', Validators.required),
       email: new FormControl(this.username, Validators.required)
     })
@@ -97,8 +98,8 @@ export class AddBlogComponent implements OnInit {
 
   submit() {
     if (this.blogForm.valid) {
-      const formData = new FormData();
 
+      const formData = new FormData();
       formData.append('file', this.userFile);
       formData.append('blog', JSON.stringify(this.blogForm.value));
       console.log(this.blogForm.value);
@@ -108,11 +109,12 @@ export class AddBlogComponent implements OnInit {
         if (data != null) {
           this.showMsg = "Insert success";
           this.status = true;
+          this.router.navigate(['user-dashboard']);
           this.ngOnInit();
         }
       }, (err: any) => {
         console.warn('insert failed');
-        this.showMsg = 'Blog insert falied';
+        this.showMsg = 'Enter valid input..';
         this.status = false;
       })
     }
@@ -126,6 +128,7 @@ export class AddBlogComponent implements OnInit {
           blogId: data[0].blogId,
           blogTitle: data[0].blogTitle,
           blogDescription: data[0].blogDescription,
+          image: data[0].image,
           email: data[0].email
         })
       })
