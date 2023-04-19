@@ -102,8 +102,12 @@ export class EditBlogDialog implements OnInit {
 
   update() {
     if (this.editBlog.valid) {
-      console.log(this.editBlog.value);
-      this.service.saveUserBlog(this.editBlog.value).subscribe((data) => {
+
+      const formData = new FormData();
+      formData.append('file', this.userFile);
+      formData.append('blog', JSON.stringify(this.editBlog.value));
+
+      this.service.saveUserBlog(formData).subscribe((data) => {
         console.log(data);
         this.editConfirm();
       }, (err => {
@@ -113,7 +117,6 @@ export class EditBlogDialog implements OnInit {
       }))
     }
   }
-
   public editConfirm() {
     this.dialogRef.close(true);
   }

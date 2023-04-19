@@ -26,7 +26,7 @@ export class EditComponent implements OnInit {
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.required],
+      password: [{ value: '', readonly: true }, Validators.required],
       role: this.formbuilder.control('user'),
       isactive: this.formbuilder.control(true)
     })
