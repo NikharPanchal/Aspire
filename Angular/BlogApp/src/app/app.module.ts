@@ -55,6 +55,11 @@ import { LoginRoutingModule } from './user/login/login-routing.module';
 import { BlogListRoutingModule } from './blog-list/blog-list-routing.module';
 import { BlogListModule } from './blog-list/blog-list.module';
 import { AddBlogModule } from './add-blog/add-blog.module';
+import { AddUserRoutingModule } from './add-user/add-user-routing.module';
+import { RegisterModule } from './user/register/register.module';
+import { RegisterRoutingModule } from './user/register/register-routing.module';
+import { EditModule } from './user/edit/edit.module';
+import { EditRoutingModule } from './user/edit/edit-routing.module';
 
 @NgModule({
   declarations: [
@@ -83,12 +88,12 @@ import { AddBlogModule } from './add-blog/add-blog.module';
     MatInputModule, MatMenuModule,
     HomeRoutingModule,
     AdminDashboardModule,
-    AddUserModule,
+    EditRoutingModule,
     UserDashboardModule,
     ContactModule, LoginModule,
     BlogListModule,
-    AddBlogModule
-
+    AddBlogModule,
+    RegisterRoutingModule
   ],
   providers: [LoginserviceServiceServer],
   bootstrap: [AppComponent]

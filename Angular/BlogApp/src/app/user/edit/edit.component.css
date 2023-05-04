@@ -1,7 +1,17 @@
-.form-control.ng-touched.ng-invalid {
-    border: 1px solid red;
+mat-card {
+    max-width: 600px;
+    margin: 2em auto;
+    text-align: center;
+    max-height: 600px;
+    padding: 30px;
 }
 
-.form-control.ng-touched.ng-valid {
-    border: 1px solid green;
+mat-form-field {
+    width: -webkit-fill-available;
+}
+
+.email-error {
+    color: red;
+    margin-right: 400px;
+    margin-top: 10px;
 }

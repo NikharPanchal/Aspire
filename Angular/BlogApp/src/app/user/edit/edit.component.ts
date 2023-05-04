@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginserviceService } from '../service/authenticationService.service';
+import { LoginserviceServiceServer } from '../service/authenticationService.service.server';
 
 
 @Component({
@@ -10,78 +11,66 @@ import { LoginserviceService } from '../service/authenticationService.service';
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
-
+  status: boolean = false;
+  userInfo: any;
   subimitted: boolean = false;
-  message = '';
-  userId: any;
-  passwordcheck = '';
-  editComponent!: EditComponent;
-  updateform: FormGroup;
+  showMsg = '';
+  emailmessage = "";
+  private userArr: any = [];
+  constructor(private formbuilder: FormBuilder, private service: LoginserviceServiceServer, private route: ActivatedRoute) { }
 
-  constructor(private formbuilder: FormBuilder, private route: ActivatedRoute, private router: Router,
-    private userservice: LoginserviceService) {
-    console.log('constructor');
-    this.updateform = this.formbuilder.group({
-      id: this.formbuilder.control(['', Validators.compose([Validators.required, Validators.minLength(5)])]),
-      fname: ['', Validators.required],
-      lname: ['', Validators.required],
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: [{ value: '', readonly: true }, Validators.required],
-      role: this.formbuilder.control('user'),
-      isactive: this.formbuilder.control(true)
-    })
-  }
-
-  // updateform = new FormGroup({
-  //   id: new FormControl({ value: 0, disabled: true }),
-  //   fname: new FormControl('', Validators.required),
-  //   lname: new FormControl('', Validators.required),
-  //   email: new FormControl('', Validators.compose([Validators.required, Validators.email])),
-  //   password: new FormControl('', Validators.required)
-
-  // })
-
-  ngOnInit(): void {
-
-    console.log('oninit');
-    this.passwordcheck = "password";
-    this.userId = this.route.snapshot.params['userId'];
-    console.log("userid", this.userId);
-    this.userservice.getUserInfoById(this.userId).subscribe((data) => {
-      console.log(data);
-      console.log(data[0].fname);
-      if (data != null) {
-        this.updateform = this.formbuilder.group({
-          id: data[0].id,
-          fname: data[0].fname,
-          lname: data[0].lname,
-          email: data[0].email,
-          password: data[0].password,
-          role: data[0].role,
-          isactive: data[0].isactive
-        });
-      }
-    });
-  }
-  update() {
-    console.log('update function');
+  submit() {
     this.subimitted = true;
-    if (this.updateform.valid) {
-      this.userservice.updateUser(this.userId, this.updateform.value).subscribe(data => {
-        console.log(this.updateform.value);
-        console.log('update sucess');
-        this.message = "Update success";
+
+    if (this.registerform.valid) {
+      console.log("form submittted");
+      this.service.registerUser(this.registerform.value).subscribe(data => {
+        console.log(this.registerform.value);
+
+        // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+        // this.userArr.push(this.registerform.value);
+        // console.log(this.userArr);
+        this.showMsg = "Update Success";
+        this.status = true;
       });
-    } else {
-      this.updateform.invalid;
-    }
-  }
-  showPassword() {
-    if (this.passwordcheck == 'password') {
-      this.passwordcheck = 'text';
+      // this.service.registerUser(this.registerform.value).subscribe(data => {
+      //   console.log(this.registerform.value);
+
+      //   // this.userArr = JSON.parse(localStorage.getItem('userData') || '{}');
+
+      //   // this.userArr.push(this.registerform.value);
+      //   // console.log(this.userArr);
+      //   console.log('registration sucess');
+      //   this.showMsg = true;
+      // });
     }
     else {
-      this.passwordcheck = 'password';
+      //this.message = "invalid information";
     }
+  }
+  hide = true;
+  registerform: any;
+
+  loadform() {
+    this.registerform = this.formbuilder.group({
+      id: new FormControl(''),
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]),],
+      password: ['', Validators.required],
+      role: this.formbuilder.control('user'),
+      isactive: this.formbuilder.control(false)
+    })
+  }
+  ngOnInit(): void {
+    this.loadform();
+    const userId = this.route.snapshot.params['userId'];
+    console.log(userId);
+    this.service.getUserInfoById(userId).subscribe((data: any) => {
+      this.userInfo = data;
+      console.log(this.userInfo);
+      this.registerform.patchValue(data);
+    })
   }
 }

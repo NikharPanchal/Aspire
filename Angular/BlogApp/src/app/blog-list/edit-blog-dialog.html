@@ -10,6 +10,7 @@
     <mat-dialog-content class="mat-typography">
 
         <input formControlName="blogId" hidden name="blogId">
+
         <div class="title">
             <mat-form-field class="full-width" appearance="outline">
                 <mat-label>Blog Title</mat-label>
@@ -24,7 +25,7 @@
             <mat-error *ngIf="editBlog.controls.blogDescription.errors">Blog Description Required</mat-error>
         </mat-form-field>
 
-        <input type="file" name="file" (change)="onSelectFile($event)" class="input">
+        <input type="file" (change)="onSelectFile($event)" class="input">
 
         <img height="100" width="100" [src]="imagePath">
 

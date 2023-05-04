@@ -1,55 +1,73 @@
-<div class="container-fluid login">
-    <div class="row">
-        <div class="col-md-6 offset-md-3 shadow-lg p-3 my-5 bg-white rounded border border-radius">
-            <h2 class="text-center p-3">User Registration</h2>
-            <div [ngClass]="{'alert alert-success':subimitted && registerform.valid && message!=''}" role="alert">
-                {{message}}
+<!-- <h2 class="text-center p-3">Add New User</h2> -->
+<mat-card>
+    <mat-card-content>
+        <!-- <div class="row" *ngIf="showMsg">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>Success!</strong>
+                </p>
             </div>
-
-            <div [ngClass]="{'alert alert-danger':subimitted && registerform.valid && emailmessage!=''}" role="alert">
-                {{emailmessage}}
+        </div> -->
+        <div class="row" *ngIf="showMsg!='' && status==true && registerform.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-success">
+                    <strong>{{showMsg}}</strong>
+                </p>
             </div>
-            <form [formGroup]="registerform" (ngSubmit)="register()">
-
-                <div class="form-group mt-3">
-                    <label for="firstname">First Name</label>
-                    <input type="text" formControlName="fname"
-                        [ngClass]=" {'is-invalid':subimitted && registerform.controls.fname.errors}" name="firstname"
-                        class="form-control" class="form-control">
-                </div>
-
-                <div class="form-group mt-3">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" formControlName="lname"
-                        [ngClass]="{'is-invalid':subimitted && registerform.controls.lname.errors}" name="lastname"
-                        class="form-control" class="form-control">
-                </div>
-
-                <div class="form-group mt-3">
-                    <label for="email">Email address</label>
-                    <input type="text" formControlName="email"
-                        [ngClass]="{'is-invalid':subimitted && registerform.controls.email.errors}" name="email"
-                        class="form-control" class="form-control">
-                </div>
-
-                <div class="form-group mt-3">
-                    <label for="password">Password</label>
-                    <input [type]="password" formControlName="password"
-                        [ngClass]="{'is-invalid':subimitted && registerform.controls.password.errors}"
-                        class="form-control">
-                    <div class="col p-1">
-                        <input type="checkbox" (click)="showPassword()"> Show Password
-                    </div>
-                </div>
-
-                <div class="text-center mt-3">
-                    <a routerLink="/admin-dashboard" class="btn btn-success">Back to Dashboard</a>
-                </div>
-                <div class="text-center mt-3">
-                    <input type="submit" value="Register" class="btn btn-success">
-                </div>
-            </form>
         </div>
-    </div>
-</div>
-<router-outlet></router-outlet>
+        <div class="row" *ngIf="showMsg!='' && status==false && registerform.valid">
+            <div class="col-xs-12">
+                <p class="alert alert-warning">
+                    <strong>{{showMsg}}</strong>
+                </p>
+            </div>
+        </div>
+        <form class="example-form" [formGroup]="registerform" (ngSubmit)="submit()">
+
+
+            <!-- <input formControlName="id" name="id" hidden maxlength="25"> -->
+
+            <div class="firstname">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input class="input" formControlName="fname" name="fname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.fname.errors">First Name invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div class="lastname">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input class="input" formControlName="lname" name="lname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.lname.errors">Last Name invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="email">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Email Address</mat-label>
+                    <input class="input" formControlName="email" name="lname" matInput maxlength="25">
+                    <mat-error *ngIf="registerform.controls.email.errors">Email invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="password">
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="registerform.controls.password.errors">password invalid</mat-error>
+                </mat-form-field>
+            </div>
+
+
+            <div>
+                <button mat-flat-button color="primary">Register</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

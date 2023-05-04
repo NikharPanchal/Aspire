@@ -104,16 +104,16 @@ export class EditBlogDialog implements OnInit {
     if (this.editBlog.valid) {
 
       const formData = new FormData();
+
       formData.append('file', this.userFile);
       formData.append('blog', JSON.stringify(this.editBlog.value));
 
-      this.service.saveUserBlog(formData).subscribe((data) => {
+      this.service.updateUserBlogData(formData).subscribe((data) => {
         console.log(data);
         this.editConfirm();
       }, (err => {
-
         this.status = false;
-        this.showMsg = "Insert valid input..!"
+        this.showMsg = "Something went wrong.."
       }))
     }
   }
@@ -127,7 +127,6 @@ export class EditBlogDialog implements OnInit {
       blogTitle: ['', [Validators.required, Validators.maxLength(40)]],
       blogDescription: ['', Validators.required],
       email: ['', Validators.required],
-
     })
   }
   constructor(public dialogRef: MatDialogRef<EditBlogDialog>,
@@ -152,6 +151,7 @@ export class EditBlogDialog implements OnInit {
         blogDescription: res[0].blogDescription,
         email: res[0].email,
       })
+      this.userFile = res[0].imageByte;
       this.imagePath = this._sanitizer.bypassSecurityTrustResourceUrl('data:image/jpg;base64,'
         + res[0].imageByte);
     })

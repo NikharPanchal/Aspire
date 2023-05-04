@@ -7,7 +7,7 @@ const routes: Routes = [
     path: 'add', component: AddUserComponent,
   },
   {
-    path: 'edituser/:userId', component: AddUserComponent,
+    path: 'editUser/:userId', component: AddUserComponent,
   }
 ];
 

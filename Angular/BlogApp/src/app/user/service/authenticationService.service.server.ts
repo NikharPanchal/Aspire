@@ -20,11 +20,17 @@ export class LoginserviceServiceServer {
 
   blogUrl = "http://localhost:8080/blogs";
 
-  getAllData() {
-    let username = 'admin';
-    let password = 'admin';
+  // const token = localStorage.getItem('token');
+  // const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+  // let username = 'admin';
+  //   let password = 'admin';
+
+  //   const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+
+  getAllData() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get("http://localhost:8080/blog/hasuser", { headers: headers })
   }
 
@@ -33,18 +39,14 @@ export class LoginserviceServiceServer {
   }
 
   checkEmailAddressExist(email: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post("http://localhost:8080/blog/checkEmail", email, { headers: headers });
   }
 
   registerUser(userData: any): Observable<any> {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post("http://localhost:8080/blog/save", userData, { headers: headers });
   }
 
@@ -69,33 +71,25 @@ export class LoginserviceServiceServer {
   }
 
   getUserInfoById(id: any): Observable<any> {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.myUrl + "/userbyid"}/${id}`, { headers: headers });
   }
 
   deleteUser(id: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.myUrl + "/delete"}/${id}`, { headers: headers });
   }
   updateUser(userId: any, updateData: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const header = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.put(`${this.myUrl + "/update"}/${userId}`, updateData, { headers: header });
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${this.myUrl + "/update"}/${userId}`, updateData, { headers: headers });
   }
 
   updateStatus(id: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.myUrl + "/status"}/${id}`, { headers: headers });
   }
 
@@ -130,50 +124,38 @@ export class LoginserviceServiceServer {
   }
 
   getAllBlogs() {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.blogUrl + "/getAllBlog"}`, { headers: headers });
   }
 
   deleteBlog(blogId: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.blogUrl + "/deleteBlog"}/${blogId}`, { headers: headers });
   }
 
   getBlogbyUserName(email: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.blogUrl + "/getBlogById"}/${email}`, { headers: headers });
   }
 
   saveUserBlog(blogData: FormData) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post("http://localhost:8080/blogs/saveBlog", blogData, { headers: headers });
   }
 
   getBlogbyBlogId(blogId: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${this.blogUrl + "/findBlogById"}/${blogId}`, { headers: headers });
   }
 
-  updateUserBlogData(blogId: any, updateData: any) {
-    let username = 'admin';
-    let password = 'admin';
-
-    const header = new HttpHeaders({ Authorization: 'Basic ' + btoa(username + ':' + password) })
-    return this.http.put(`${this.blogUrl + "/updateBlog"}/${blogId}`, updateData, { headers: header });
+  updateUserBlogData(updateData: FormData) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post("http://localhost:8080/blogs/updateBlog", updateData, { headers: headers });
   }
 }
