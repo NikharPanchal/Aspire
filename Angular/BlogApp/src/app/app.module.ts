@@ -25,7 +25,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuContent, MatMenuModule } from '@angular/material/menu';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -60,6 +60,7 @@ import { RegisterModule } from './user/register/register.module';
 import { RegisterRoutingModule } from './user/register/register-routing.module';
 import { EditModule } from './user/edit/edit.module';
 import { EditRoutingModule } from './user/edit/edit-routing.module';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,11 @@ import { EditRoutingModule } from './user/edit/edit-routing.module';
     ContactModule, LoginModule,
     BlogListModule,
     AddBlogModule,
-    RegisterRoutingModule
+    RegisterRoutingModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
   ],
   providers: [LoginserviceServiceServer],
   bootstrap: [AppComponent]

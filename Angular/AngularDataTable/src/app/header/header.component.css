@@ -12,5 +12,11 @@ mat-sidenav-content {
 }
 
 mat-toolbar {
-    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
 }

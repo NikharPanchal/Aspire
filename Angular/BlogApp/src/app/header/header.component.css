@@ -1,6 +1,34 @@
-.spacer {
-    flex: 1 1 auto;
+/* .welcome-msg {
+  justify-content: flex-end;
+} */
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-height: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-toolbar {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 100%;
   }
+
+  .fill-remaining-space {
+    flex-basis: 100%;
+    height: 1;
+  }
+
+  a {
+    display: none;
+  }
+
   .welcome-msg {
-    justify-content: flex-end;
+    font-size: 20 px;
   }
+}

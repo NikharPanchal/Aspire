@@ -1,0 +1,102 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+}
+
+.toggle-btn {
+    width: 20px;
+    height: 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-btn span {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    transform: translatey(-50%);
+    background: #979797;
+}
+
+.toggle-btn span:nth-child(1) {
+    top: 0;
+}
+
+.toggle-btn span:nth-child(2) {
+    top: 100%;
+}
+
+.search-box {
+    position: relative;
+    max-width: 500px;
+    width: 50%;
+    height: 35px;
+    display: flex;
+}
+
+.search-input {
+    width: 80%;
+    height: 100%;
+    border: 1px solid#dbdbdb;
+    border-radius: 50px 0px 0px 50px;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.search-btn {
+    width: 15%;
+    height: 100%;
+    background: #f0f0f0;
+    border: 1px solid#dbdbdb;
+    padding: 5px 0;
+    border-radius: 0px 50px 50px 0px;
+    border-left: none;
+}
+
+.search-img {
+    height: 25px;
+}
+
+.youtube-logo {
+    height: 30px;
+    margin-left: 20px;
+}
+
+.my-logo {
+    width: 30%;
+}
+
+.microphone {
+    position: relative;
+    max-width: 500px;
+    width: 10%;
+    height: 25px;
+    display: flex;
+    cursor: pointer;
+}
+
+.side-btn {
+    position: relative;
+    max-width: 500px;
+    width: 20%;
+    height: 25px;
+    display: flex;
+    cursor: pointer;
+}
+
+.profile {
+    display: flex;
+    background: #979797;
+    width: 10%;
+}
